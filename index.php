@@ -13,16 +13,40 @@
     <div class="header">
       <h1>Simple Chat Room</h1>
     </div>
-    <div class="login">
-      <div class="inputs">
-        <input id="username" placeholder="Username">
-        <input id="channelName" placeholder="Channel Name">
-        <input id="channelPassword" placeholder="Channel Password">
+    <div class="gridContainer">
+      <div class="patchNotes">
+        <h1>Patch Notes V2.0</h1>
+        <p>&#8226; Bug Fixes</p>
+        <p>&#8226; New styling changes</p>
+        <p>&#8226; <span>Enter Key Send</span> Feature added</p>
+        <p>&#8226; <span>Auto Leave</span> feature added</p>
+        <p>&#8226; <span>Patch Notes</span> feature added</p>
+        <p>&#8226; Faster message update timings</p>
       </div>
-      <div class="options">
-        <input type="button" value="Host" onclick="hostChannel();">
-        <input type="button" value="Join" onclick="joinChannel();">
+      <div class="login">
+        <div class="inputs">
+          <input id="username" placeholder="Username" autocomplete="off" autofocus>
+          <input id="channelName" placeholder="Channel Name" autocomplete="off">
+          <input id="channelPassword" placeholder="Channel Password" autocomplete="off">
+        </div>
+        <div class="options">
+          <input type="button" value="Host" onclick="hostChannel();">
+          <input type="button" value="Join" onclick="joinChannel();">
+        </div>
       </div>
+      <div class="patchNotes" style="grid-column-start: 3;">
+        <h1>Coming in V2.1</h1>
+        <p>&#8226; Bug Fixes</p>
+        <p>&#8226; Special characters ability</p>
+        <p>&#8226; Faster message update timings</p>
+        <p>&#8226; Advanced Password Input</p>
+        <p>&#8226; Simplified Timestamps</p>
+        <p>&#8226; Active Users feature</p>
+        <p>&#8226; Host Identifier</p>
+      </div>
+    </div>
+    <div class="footer">
+      <h1>powered by Bain</h1>
     </div>
     <script>
       function joinChannel(){

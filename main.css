@@ -2,6 +2,7 @@
   --gold: #ffa845;
   --darkGrey: #1a1a1a;
   --lightGrey: #333333;
+  --red: #ff5447;
 }
 *{
   margin: 0;
@@ -10,6 +11,8 @@
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
   font-size: 100%;
+  font-weight: bold;
+  outline: none;
 }
 body{
   background-image: linear-gradient(to bottom right, var(--darkGrey), var(--lightGrey));
@@ -18,11 +21,43 @@ body{
 }
 .header{
   width: 100%;
+  font-size: 150%;
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--lightGrey);
   color: white;
   padding: 12px 0px;
   text-align: center;
+}
+.gridContainer{
+  display: grid;
+  grid-template-columns: 15% auto 15%;
+  grid-template-rows: 100%;
+  grid-gap: 8px;
+}
+.patchNotes{
+  grid-column-start: 1;
+  width: 80%;
+  height: fit-content;
+  margin: 8px auto;
+  padding: 8px;
+  border-radius: 15px;
+  background-color: var(--darkGrey);
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
+}
+.patchNotes h1{
+  color: var(--gold);
+  text-align: center;
+  margin: 12px;
+}
+.patchNotes p{
+  color: var(--lightGrey);
+  font-size: 90%;
+  margin: 12px;
+  font-weight: normal;
+}
+.patchNotes span{
+  font-weight: bold;
+  font-style: italic;
 }
 .messageBox{
   width: 80%;
@@ -30,8 +65,9 @@ body{
   overflow: auto;
   border: none;
   border-radius: 15px;
-  box-shadow: 0px 0px 10px 1px var(--lightGrey);
-  margin: 8px auto;
+  background-color: var(--darkGrey);
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
+  margin: 22px auto;
   padding: 8px;
 }
 #serverMessage{
@@ -41,14 +77,13 @@ body{
   background-color: var(--lightGrey);
 
   width: fit-content;
+  min-width: 150px;
   max-width: 600px;
 
   word-break: break-all;
 
   border: none;
   border-radius: 15px;
-
-  box-shadow: 0px 0px 10px 1px var(--lightGrey);
 
   margin: 16px 51% 16px 16px;
   padding: 8px 12px;
@@ -62,6 +97,7 @@ body{
 }
 #userMessage{
   float: right;
+  text-align: right;
   display: inline-block;
   color: white;
   background-color: var(--lightGrey);
@@ -73,8 +109,6 @@ body{
 
   border: none;
   border-radius: 15px;
-
-  box-shadow: 0px 0px 10px 1px var(--lightGrey);
 
   margin: 16px 16px 16px 51%;
   padding: 8px 12px;
@@ -90,7 +124,11 @@ body{
   display: grid;
   width: 80%;
   margin: 8px auto;
+  padding: 4px;
   grid-template-columns: 10% auto 10%;
+  background-color: var(--darkGrey);
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
+  border-radius: 25px;
 }
 .messageBar input{
   width: 90%;
@@ -99,34 +137,49 @@ body{
   border: none;
   border-radius: 15px;
 
-  box-shadow: 0px 0px 10px 1px var(--lightGrey);
   background-color: var(--darkGrey);
-  outline: none;
-  color: var(--gold);
-  caret-color: var(--gold);
 
   margin: 8px auto;
   padding: 8px;
 }
 #message{
-
+  background-color: var(--lightGrey);
+  caret-color: var(--gold);
+  color: var(--gold);
 }
 #send{
-  cursor: pointer;
-  border: 2px solid var(--gold);
-  background-color: var(--gold);
-  color: white;
-}
-#exit{
+  transition: 0.5s;
   cursor: pointer;
   border: 2px solid var(--gold);
   border-radius: 15px;
   background-color: var(--gold);
   color: white;
 }
+#send:hover{
+  transition: 0.5s;
+  box-shadow: 0px 0px 10px 1px var(--gold);
+}
+#exit{
+  transition: 0.5s;
+  cursor: pointer;
+  border: 2px solid var(--red);
+  border-radius: 15px;
+  background-color: var(--red);
+  color: white;
+}
+#exit:hover{
+  transition: 0.5s;
+  box-shadow: 0px 0px 10px 1px var(--red);
+}
 .login{
+  grid-column-start: 2;
   width: 20%;
-  margin: 0 auto;
+  height: fit-content;
+  margin: 8px auto;
+  padding: 8px;
+  border-radius: 15px;
+  background-color: var(--darkGrey);
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
 }
 .inputs input{
   width: 80%;
@@ -135,8 +188,7 @@ body{
   border: none;
   border-radius: 15px;
 
-  box-shadow: 0px 0px 10px 1px var(--lightGrey);
-  background-color: var(--darkGrey);
+  background-color: var(--lightGrey);
   outline: none;
   color: var(--gold);
   caret-color: var(--gold);
@@ -151,13 +203,23 @@ body{
   border: none;
   border-radius: 15px;
 
-  box-shadow: 0px 0px 10px 1px var(--lightGrey);
-  background-color: var(--darkGrey);
+  background-color: var(--gold);
   outline: none;
-  color: var(--gold);
+  color: white;
   caret-color: var(--gold);
 
   margin: 8px auto;
   padding: 8px;
   cursor: pointer;
+}
+.footer{
+  width: 100%;
+  color: white;
+  background-color: var(--darkGrey);
+  position: fixed;
+  bottom: 0;
+}
+.footer h1{
+  font-size: 150%;
+  text-align: right;
 }

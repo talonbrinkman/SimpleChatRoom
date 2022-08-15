@@ -17,8 +17,11 @@
     </div>
     <div class="messageBar">
       <input type="button" id="exit" value="Leave" onclick="exitChannel();">
-      <input type="text" id="message" placeholder="Message...">
+      <input type="text" id="message" placeholder="Message..." autofocus>
       <input type="button" id="send" value="Send" onclick="sendMessage();">
+    </div>
+    <div class="footer">
+      <h1>powered by Bain</h1>
     </div>
     <script>
       var hostStatus = sessionStorage.getItem("hostStatus");
@@ -65,7 +68,7 @@
             $('#messageBox').html(data);
           }
         });
-      }, 1000);
+      }, 500);
     </script>
   </body>
 </html>
