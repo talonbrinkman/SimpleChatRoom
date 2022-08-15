@@ -30,7 +30,7 @@ body{
 }
 .gridContainer{
   display: grid;
-  grid-template-columns: 15% auto 15%;
+  grid-template-columns: 20% auto 20%;
   grid-template-rows: 100%;
   grid-gap: 8px;
 }
@@ -173,7 +173,7 @@ body{
 }
 .login{
   grid-column-start: 2;
-  width: 20%;
+  width: 35%;
   height: fit-content;
   margin: 8px auto;
   padding: 8px;
