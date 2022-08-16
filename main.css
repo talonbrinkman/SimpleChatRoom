@@ -61,7 +61,7 @@ body{
 }
 .messageBox{
   width: 80%;
-  max-height: 80vh;
+  max-height: 70vh;
   overflow: auto;
   border: none;
   border-radius: 15px;
@@ -131,7 +131,7 @@ body{
   border-radius: 25px;
 }
 .messageBar input{
-  width: 90%;
+  width: 95%;
   min-width: 50px;
 
   border: none;
@@ -197,6 +197,7 @@ body{
   padding: 8px;
 }
 .options input{
+  transition: 0.5s;
   width: 85%;
   display: block;
 
@@ -212,6 +213,39 @@ body{
   padding: 8px;
   cursor: pointer;
 }
+.options input:hover{
+  transition: 0.5s;
+  box-shadow: 0px 0px 10px 1px var(--gold);
+}
+.usersBar{
+  transition: 0.5s;
+  width: 80%;
+  overflow: auto;
+  border: none;
+  border-radius: 15px;
+  background-color: var(--darkGrey);
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
+  margin: 22px auto;
+  padding: 16px 8px;
+  color: white;
+}
+#notTyping{
+  transition: 0.5s;
+  display: inline-block;
+  margin: 0 16px;
+  padding: 8px 16px;
+  background-color: var(--lightGrey);
+  border-radius: 15px;
+}
+#isTyping{
+  transition: 0.5s;
+  display: inline-block;
+  margin: 0 16px;
+  padding: 8px 16px;
+  background-color: var(--gold);
+  box-shadow: 0px 0px 10px 1px var(--gold);
+  border-radius: 15px;
+}
 .footer{
   width: 100%;
   color: white;
@@ -222,4 +256,18 @@ body{
 .footer h1{
   font-size: 150%;
   text-align: right;
+}
+/*Scrollbar*/
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background: var(--darkGrey);
+}
+::-webkit-scrollbar-thumb{
+  background: var(--lightGrey);
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: var(--gold);
 }

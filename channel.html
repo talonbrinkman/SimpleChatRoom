@@ -12,9 +12,8 @@
     <div class="header">
       <h1 id="channelTitle">Simple Chat Room</h1>
     </div>
-    <div class="messageBox" id="messageBox">
-
-    </div>
+    <div class="usersBar" id="usersBar"></div>
+    <div class="messageBox" id="messageBox"></div>
     <div class="messageBar">
       <input type="button" id="exit" value="Leave" onclick="exitChannel();">
       <input type="text" id="message" placeholder="Message..." autofocus>
@@ -24,14 +23,19 @@
       <h1>powered by Bain</h1>
     </div>
     <script>
+      //Variables
       var hostStatus = sessionStorage.getItem("hostStatus");
       var username = sessionStorage.getItem("username");
       var channelName = sessionStorage.getItem("channelName");
       var channelPassword = sessionStorage.getItem("channelPassword");
+      var send = document.getElementById("message");
+      var isTyping = "false";
+
+      //Change Page Title
       document.title = channelName + " - " + username;
       console.log("Client Username: " + username + " | Channel Name: " + channelName + " | Channel Password: " + channelPassword + " | Host: " + hostStatus);
 
-      var send = document.getElementById("message");
+      //Enter Key Send & Send Method
       send.addEventListener("keydown", function (e) {
           if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
               validate(e);
@@ -48,15 +52,17 @@
         function()
         {});
       }
+      //Exit Channel Method
       function exitChannel(){
         $.post('exitChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
         function()
         {});
         location.href = '/simplechatroom';
       }
+      //Update Messages Method
       setInterval(function updateMessages(){
-        const messageBox = document.getElementById('messageBox');
-        if (messageBox.textContent.includes("doesn't exist")){
+        var messageBox = document.getElementById('messageBox');
+        if(messageBox.textContent.includes("doesn't exist")){
           exitChannel();
         }
         document.getElementById("channelTitle").innerHTML = "Channel - " + channelName;
@@ -68,7 +74,25 @@
             $('#messageBox').html(data);
           }
         });
+        updateUsers();
       }, 500);
+      //Update Users Method
+      function updateUsers(){
+        var usersBar = document.getElementById('usersBar');
+        var messageBar = document.getElementById('message').value;
+        if(messageBar !== ""){
+          isTyping = "true";
+        }
+        else{
+          isTyping = "false";
+        }
+        $.post('updateUsers.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword,postisTyping:isTyping},
+        function(data){
+          if(data != ""){
+            $('#usersBar').html(data);
+          }
+        });
+      }
     </script>
   </body>
 </html>

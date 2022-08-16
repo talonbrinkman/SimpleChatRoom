@@ -23,7 +23,8 @@
     //echo "Error: " . $sql . "<br>" . $conn->error;
   }
   //Creates Channel Table
-  $sql = "CREATE TABLE $channelName(
+  $channelMessagesTable = $channelName . '_Messages';
+  $sql = "CREATE TABLE $channelMessagesTable(
   Members VARCHAR(30) NOT NULL,
   Messages VARCHAR(256) NOT NULL,
   Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -34,8 +35,28 @@
     //echo "Error creating table: " . $conn->error;
   }
   //Inserts Channel Data
-  $sql = "INSERT INTO $channelName (Members, Messages, Time)
+  $sql = "INSERT INTO $channelMessagesTable (Members, Messages, Time)
   VALUES ('Server', '$channelHost joined', CURRENT_TIMESTAMP)";
+  if ($conn->query($sql) === TRUE){
+    //echo "New record created successfully";
+  } else {
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+  //Creates Channel Users Table
+  $channelUsersTable = $channelName . '_Users';
+  $sql = "CREATE TABLE $channelUsersTable(
+  Members VARCHAR(30) NOT NULL,
+  isTyping VARCHAR(5) NOT NULL,
+  Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  )";
+  if ($conn->query($sql) === TRUE){
+    //echo "Table MyGuests created successfully";
+  } else{
+    //echo "Error creating table: " . $conn->error;
+  }
+  //Inserts Channel Users Data
+  $sql = "INSERT INTO $channelUsersTable (Members, Time)
+  VALUES ('$channelHost', CURRENT_TIMESTAMP)";
   if ($conn->query($sql) === TRUE){
     //echo "New record created successfully";
   } else {

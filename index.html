@@ -36,13 +36,15 @@
       </div>
       <div class="patchNotes" style="grid-column-start: 3;">
         <h1>Coming in V2.1</h1>
-        <p>&#8226; Bug Fixes</p>
+        <p>&#8226; Bug Fixes &#10004;</p>
         <p>&#8226; Special characters ability</p>
-        <p>&#8226; Faster message update timings</p>
+        <p>&#8226; Faster message update timings &#10004;</p>
         <p>&#8226; Advanced Password Input</p>
         <p>&#8226; Simplified Timestamps</p>
-        <p>&#8226; Active Users feature</p>
+        <p>&#8226; <span>Active Users</span> feature</p>
         <p>&#8226; Host Identifier</p>
+        <p>&#8226; Is Typing feature &#10004;</p>
+        <p>&#8226; New Scrollbar &#10004;</p>
       </div>
     </div>
     <div class="footer">
@@ -67,7 +69,7 @@
 
           $.post('joinChannel.php',{postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
           function(){});
-          location.href = '/simplechatroom/channel.php';
+          location.href = '/simplechatroom/channel.html';
         }
         else{
           alert("Error 400");
@@ -91,7 +93,7 @@
 
           $.post('createChannel.php',{postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
           function(){});
-          location.href = '/simplechatroom/channel.php';
+          location.href = '/simplechatroom/channel.html';
         }
         else{
           alert("Error 400");

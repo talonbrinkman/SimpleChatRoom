@@ -14,8 +14,9 @@
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
-
-  $sql = "SELECT * FROM $channelName";
+  //Return Messages
+  $channelMessagesTable = $channelName . '_Messages';
+  $sql = "SELECT * FROM $channelMessagesTable";
   $result = mysqli_query($conn, $sql);
   if(mysqli_num_rows($result) > 0){
     while ($row = mysqli_fetch_assoc($result)){
@@ -25,11 +26,10 @@
       else{
         echo '<a id="serverMessage">' . '<span>' . $row['Members'] . '</span><br>' . $row['Messages'] . '<br><span>' . $row['Time'] . '</a>';
       }
-
     }
   }
   else{
-    echo "<a>No Channels</a>";
+    //echo "<a>No Channels</a>";
   }
   //Disconnects
   $conn->close();

@@ -3,7 +3,7 @@
   $channelHost = $_POST['postusername'];
   $channelName = $_POST['postchannelName'];
   $channelPassword = $_POST['postchannelPassword'];
-  $message = $_POST['postmessage'];
+  $isTyping = $_POST['postisTyping'];
 
   $servername = "localhost";
   $username = "root";
@@ -15,10 +15,26 @@
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
-  //Inserts Channel Data
-  $channelMessagesTable = $channelName . '_Messages';
-  $sql = "INSERT INTO $channelMessagesTable (Members, Messages, Time)
-  VALUES ('$channelHost', '$message', CURRENT_TIMESTAMP)";
+  //Gets Channels Users
+  $channelUsersTable = $channelName . '_Users';
+  $sql = "SELECT * FROM $channelUsersTable";
+  $result = mysqli_query($conn, $sql);
+  if(mysqli_num_rows($result) > 0){
+    while ($row = mysqli_fetch_assoc($result)){
+
+      if($row['isTyping'] == 'true'){
+        echo '<h1 id="isTyping">' . $row['Members'] .'</h1>';
+      }
+      else{
+        echo '<h1 id="notTyping">' . $row['Members'] .'</h1>';
+      }
+    }
+  }
+  else{
+    //echo "<a>No Channels</a>";
+  }
+  //Updates Channel Users isTyping Data
+  $sql = "UPDATE $channelUsersTable SET isTyping='$isTyping' WHERE Members='".$channelHost."'";
   if ($conn->query($sql) === TRUE){
     //echo "New record created successfully";
   } else {
