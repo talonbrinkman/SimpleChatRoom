@@ -8,6 +8,8 @@
   $username = "root";
   $password = "";
   $dbname = "simplechatroom";
+
+  $channelUsersTable = $channelName . '_Users';
   // Create connection
   $conn = new mysqli($servername, $username, $password, $dbname);
   // Check connection
@@ -53,7 +55,6 @@
       //echo "Error: " . $sql . "<br>" . $conn->error;
     }
     //Creates Channel Users Table
-    $channelUsersTable = $channelName . '_Users';
     $sql = "CREATE TABLE $channelUsersTable(
     Members VARCHAR(30) NOT NULL,
     isTyping VARCHAR(5) NOT NULL,
@@ -91,14 +92,6 @@
     } else {
       //echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    //Updates User Count
-    $sql = "UPDATE channels SET users=users+1 WHERE channelName='".$channelName."'";
-    if ($conn->query($sql) === TRUE){
-      //echo "New record created successfully";
-    } else {
-      //echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-    $channelUsersTable = $channelName . '_Users';
     //Inserts Channel Users Data
     $sql = "INSERT INTO $channelUsersTable (Members, Time)
     VALUES ('$channelHost', CURRENT_TIMESTAMP)";

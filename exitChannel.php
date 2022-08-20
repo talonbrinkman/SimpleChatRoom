@@ -8,6 +8,8 @@
   $username = "root";
   $password = "";
   $dbname = "simplechatroom";
+
+  $channelUsersTable = $channelName . '_Users';
   // Create connection
   $conn = new mysqli($servername, $username, $password, $dbname);
   // Check connection
@@ -42,7 +44,6 @@
       //die("Could not delete table: " . mysql_error());
     }
     //Drops Channel Users Table
-    $channelUsersTable = $channelName . '_Users';
     $sql = "DROP TABLE $channelUsersTable";
     if(mysqli_query($conn, $sql)){
       //echo "Table members deleted successfully";
@@ -51,13 +52,6 @@
       //die("Could not delete table: " . mysql_error());
     }
   }else{
-    //Updates User Count
-    $sql = "UPDATE channels SET users=users-1 WHERE channelName='".$channelName."'";
-    if ($conn->query($sql) === TRUE){
-      //echo "New record created successfully";
-    } else {
-      //echo "Error: " . $sql . "<br>" . $conn->error;
-    }
     //Inserts Channel Data
     $channelMessagesTable = $channelName . '_Messages';
     $sql = "INSERT INTO $channelMessagesTable (Members, Messages, Time)
@@ -67,7 +61,6 @@
     } else {
       //echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    $channelUsersTable = $channelName . '_Users';
     //Drops Channel Users Data
     $sql = "DELETE FROM $channelUsersTable WHERE Members = '$channelHost'";
     if ($conn->query($sql) === TRUE){
