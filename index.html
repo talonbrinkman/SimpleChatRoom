@@ -67,7 +67,7 @@
           var channelName = $('#channelName').val();
           var channelPassword = $('#channelPassword').val();
 
-          $.post('joinChannel.php',{postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+          $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
           function(){});
           location.href = '/simplechatroom/channel.html';
         }
@@ -91,7 +91,7 @@
           var channelName = $('#channelName').val();
           var channelPassword = $('#channelPassword').val();
 
-          $.post('createChannel.php',{postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+          $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
           function(){});
           location.href = '/simplechatroom/channel.html';
         }
