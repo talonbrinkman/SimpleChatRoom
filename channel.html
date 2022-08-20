@@ -13,7 +13,7 @@
       <h1 id="channelTitle">Simple Chat Room</h1>
     </div>
     <div class="usersBar" id="usersBar"></div>
-    <div class="messageBox" id="messageBox"></div>
+    <div class="messageBox" id="messageBox" onclick="scrollToBottom()"></div>
     <div class="messageBar">
       <input type="button" id="exit" value="Leave" onclick="exitChannel();">
       <input type="text" id="message" placeholder="Message..." autofocus>
@@ -45,6 +45,10 @@
         var text = e.target.value;
         sendMessage();
       }
+      function scrollToBottom(){
+        var element = document.getElementById("messageBox");
+        element.scrollTop = element.scrollHeight;
+      }
       function sendMessage(){
         var message = document.getElementById("message").value;
         document.getElementById("message").value = "";
@@ -66,8 +70,6 @@
           exitChannel();
         }
         document.getElementById("channelTitle").innerHTML = "Channel - " + channelName;
-        var element = document.getElementById("messageBox");
-        element.scrollTop = element.scrollHeight;
         $.post('updateMessages.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
         function(data){
           if(data != ""){
@@ -75,6 +77,7 @@
           }
         });
         updateUsers();
+        scrollToBottom();
       }, 750);
       //Update Users Method
       function updateUsers(){
