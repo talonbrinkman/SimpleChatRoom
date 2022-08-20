@@ -22,6 +22,14 @@
   } else {
     //echo "Error: " . $sql . "<br>" . $conn->error;
   }
+  //Inserts Users Data
+  $sql = "INSERT INTO users (username, channel, Time)
+  VALUES ('$channelHost', '$channelName', CURRENT_TIMESTAMP)";
+  if ($conn->query($sql) === TRUE){
+    //echo "New record created successfully";
+  } else {
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+  }
   //Updates User Count
   $sql = "UPDATE channels SET users=users+1 WHERE channelName='".$channelName."'";
   if ($conn->query($sql) === TRUE){

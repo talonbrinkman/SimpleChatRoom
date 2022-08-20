@@ -14,7 +14,14 @@
   if($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
-
+  //Drops Users Data
+  $sql = "DELETE FROM users WHERE username = '$channelHost'";
+  if ($conn->query($sql) === TRUE){
+    //echo "Record deleted successfully";
+  }
+  else{
+    //echo "Error deleting record: " . $conn->error;
+  }
   //If Host / If not Host
   if ($hostStatus == "true") {
     //Drops Channel Data
@@ -52,6 +59,7 @@
       //echo "Error: " . $sql . "<br>" . $conn->error;
     }
     //Inserts Channel Data
+    $channelMessagesTable = $channelName . '_Messages';
     $sql = "INSERT INTO $channelMessagesTable (Members, Messages, Time)
     VALUES ('Server', '$channelHost left', CURRENT_TIMESTAMP)";
     if ($conn->query($sql) === TRUE){
