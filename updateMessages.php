@@ -8,23 +8,42 @@
   $username = "root";
   $password = "";
   $dbname = "simplechatroom";
+
+  $channelMessagesTable = $channelName . '_Messages';
   // Create connection
   $conn = new mysqli($servername, $username, $password, $dbname);
   // Check connection
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
+  //Gets Host Username
+  $sql = "SELECT * FROM channels WHERE channelName='".$channelName."'";
+  $result = mysqli_query($conn, $sql);
+  if(mysqli_num_rows($result) > 0){
+    while ($row = mysqli_fetch_assoc($result)){
+      $hostUsername = $row['channelHost'];
+    }
+  }
   //Return Messages
-  $channelMessagesTable = $channelName . '_Messages';
   $sql = "SELECT * FROM $channelMessagesTable";
   $result = mysqli_query($conn, $sql);
   if(mysqli_num_rows($result) > 0){
     while ($row = mysqli_fetch_assoc($result)){
       if($row['Members'] == $channelHost){
-        echo '<a id="userMessage">' . '<span>' . $row['Members'] . '</span><br>' . $row['Messages'] . '<br><span>' . $row['Time'] . '</a>';
+        if($row['Members'] == $hostUsername){
+          echo '<a id="userMessage">' . '<span>' . $row['Members'] . '⭐</span><br>' . $row['Messages'] . '<br><span>' . $row['Time'] . '</a>';
+        }
+        else{
+          echo '<a id="userMessage">' . '<span>' . $row['Members'] . '</span><br>' . $row['Messages'] . '<br><span>' . $row['Time'] . '</a>';
+        }
       }
       else{
-        echo '<a id="serverMessage">' . '<span>' . $row['Members'] . '</span><br>' . $row['Messages'] . '<br><span>' . $row['Time'] . '</a>';
+        if($row['Members'] == $hostUsername){
+          echo '<a id="serverMessage">' . '<span>⭐' . $row['Members'] . '</span><br>' . $row['Messages'] . '<br><span>' . $row['Time'] . '</a>';
+        }
+        else{
+          echo '<a id="serverMessage">' . '<span>' . $row['Members'] . '</span><br>' . $row['Messages'] . '<br><span>' . $row['Time'] . '</a>';
+        }
       }
     }
   }
