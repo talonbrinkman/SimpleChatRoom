@@ -37,7 +37,9 @@ body{
 .notes{
   grid-column-start: 1;
   width: 50%;
+  max-height: 300px;
   height: fit-content;
+  overflow: auto;
   margin: 8px auto;
   padding: 8px;
   border-radius: 15px;
