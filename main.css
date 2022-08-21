@@ -291,3 +291,6 @@ body{
 ::-webkit-scrollbar-thumb:hover{
   background: var(--gold);
 }
+#eye{
+  transition: 0.4s;
+}
