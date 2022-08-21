@@ -22,7 +22,6 @@
         <p>&#8226; Host Identifier</p>
         <p>&#8226; Is Typing feature</p>
         <p>&#8226; New Scrollbar</p>
-        <p>&#8226; Advanced Password Input</p>
         <h1>Patch Notes V2.0</h1>
         <p>&#8226; Bug Fixes</p>
         <p>&#8226; New styling changes</p>
@@ -36,7 +35,7 @@
           <input id="username" placeholder="Username" autocomplete="off">
           <input id="channelName" placeholder="Channel Name" autocomplete="off">
           <div class="password">
-            <input id="channelPassword" placeholder="Channel Password" autocomplete="off" type="text">
+            <input id="channelPassword" placeholder="Channel Password" autocomplete="off" type="password">
               <span>
                 <i id="eye" class="fa-solid fa-eye" onclick="togglePassword()"></i>
                 <!-- <i id="eyeslash" class="fa-solid fa-eye-slash"></i> -->
@@ -53,16 +52,17 @@
         <!--&#10004;-->
         <h1>Coming in V2.2</h1>
         <p>&#8226; Bug Fixes</p>
-        <p>&#8226; Special characters ability</p>
+        <p>&#8226; Special characters ability &#10004;</p>
         <p>&#8226; Simplified Timestamps</p>
         <p>&#8226; <span>Heartbeat</span></p>
+        <p>&#8226; Advanced Password Input &#10004;</p>
       </div>
     </div>
     <div class="footer">
       <h1>powered by Bain</h1>
     </div>
     <script>
-      var toggle = 0;
+      var toggle = 1;
       function togglePassword(){
         var eye = document.getElementById("eye");
         var channelPassword = document.getElementById("channelPassword");

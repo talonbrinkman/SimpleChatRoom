@@ -45,6 +45,7 @@
           echo '<a id="serverMessage">' . '<span>' . $row['Members'] . '</span><br>' . $row['Messages'] . '<br><span>' . $row['Time'] . '</a>';
         }
       }
+      echo '<div id="line"></div>';
     }
   }
   else{

@@ -3,7 +3,7 @@
   $channelHost = $_POST['postusername'];
   $channelName = $_POST['postchannelName'];
   $channelPassword = $_POST['postchannelPassword'];
-  $message = $_POST['postmessage'];
+  $message = $_POST['postresult'];
 
   $servername = "localhost";
   $username = "root";

@@ -62,8 +62,8 @@ body{
   font-style: italic;
 }
 .messageBox{
-  width: 80%;
-  max-height: 70vh;
+  width: 95%;
+  height: 65vh;
   overflow: auto;
   border: none;
   border-radius: 15px;
@@ -71,6 +71,12 @@ body{
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
   margin: 22px auto;
   padding: 8px;
+}
+#line{
+  width: 95%;
+  height: 1px;
+  margin: 0 auto;
+  background-color: var(--lightGrey);
 }
 #serverMessage{
   display: block;
@@ -124,13 +130,18 @@ body{
 }
 .messageBar{
   display: grid;
-  width: 80%;
+  width: 95%;
   margin: 8px auto;
   padding: 4px;
   grid-template-columns: 10% auto 10%;
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
   border-radius: 25px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .messageBar input{
   width: 95%;
@@ -208,7 +219,6 @@ body{
   transform: translate(0, -50%);
   top: 50%;
   font-size: 100%;
-  color: var(--gold);
   cursor: pointer;
 }
 .password{
@@ -225,7 +235,7 @@ body{
 
   background-color: var(--lightGrey);
   outline: none;
-  color: var(--white);
+  color: grey;
 
   margin: 8px auto;
   padding: 8px;
@@ -239,7 +249,7 @@ body{
 }
 .usersBar{
   transition: 0.4s;
-  width: 80%;
+  width: 95%;
   overflow: auto;
   border: none;
   border-radius: 15px;
@@ -292,5 +302,6 @@ body{
   background: var(--gold);
 }
 #eye{
+  color: var(--darkGrey);
   transition: 0.4s;
 }
