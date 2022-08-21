@@ -150,7 +150,7 @@ body{
   color: var(--gold);
 }
 #send{
-  transition: 0.5s;
+  transition: 0.4s;
   cursor: pointer;
   border: 2px solid var(--gold);
   border-radius: 15px;
@@ -158,11 +158,11 @@ body{
   color: white;
 }
 #send:hover{
-  transition: 0.5s;
+  transition: 0.4s;
   box-shadow: 0px 0px 10px 1px var(--gold);
 }
 #exit{
-  transition: 0.5s;
+  transition: 0.4s;
   cursor: pointer;
   border: 2px solid var(--red);
   border-radius: 15px;
@@ -170,24 +170,26 @@ body{
   color: white;
 }
 #exit:hover{
-  transition: 0.5s;
+  transition: 0.4s;
   box-shadow: 0px 0px 10px 1px var(--red);
 }
 .login{
   grid-column-start: 2;
   width: 50%;
-  min-width: 200px;
+  min-width: 300px;
   height: fit-content;
   margin: 8px auto;
   padding: 8px;
   border-radius: 15px;
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
+  text-align: center;
+  color: white;
+  font-size: 90%;
 }
 .inputs input{
   width: 60%;
-  min-width: 150px;
-  display: block;
+  display: inline-block;
 
   border: none;
   border-radius: 15px;
@@ -197,11 +199,23 @@ body{
   color: var(--gold);
   caret-color: var(--gold);
 
-  margin: 8px auto;
+  margin: 4px auto;
   padding: 8px;
 }
+.inputs span{
+  position: absolute;
+  right: 20%;
+  transform: translate(0, -50%);
+  top: 50%;
+  font-size: 100%;
+  color: var(--gold);
+  cursor: pointer;
+}
+.password{
+  position: relative;
+}
 .options input{
-  transition: 0.5s;
+  transition: 0.4s;
   width: 65%;
   min-width: 165px;
   display: block;
@@ -209,21 +223,22 @@ body{
   border: none;
   border-radius: 15px;
 
-  background-color: var(--gold);
+  background-color: var(--lightGrey);
   outline: none;
-  color: white;
-  caret-color: var(--gold);
+  color: var(--white);
 
   margin: 8px auto;
   padding: 8px;
   cursor: pointer;
 }
 .options input:hover{
-  transition: 0.5s;
+  transition: 0.4s;
+  color: white;
+  background-color: var(--gold);
   box-shadow: 0px 0px 10px 1px var(--gold);
 }
 .usersBar{
-  transition: 0.5s;
+  transition: 0.4s;
   width: 80%;
   overflow: auto;
   border: none;
@@ -235,7 +250,7 @@ body{
   color: white;
 }
 #notTyping{
-  transition: 0.5s;
+  transition: 0.4s;
   display: inline-block;
   margin: 0 16px;
   padding: 8px 16px;
@@ -243,7 +258,7 @@ body{
   border-radius: 15px;
 }
 #isTyping{
-  transition: 0.5s;
+  transition: 0.4s;
   display: inline-block;
   margin: 0 16px;
   padding: 8px 16px;
@@ -259,7 +274,7 @@ body{
   bottom: 0;
 }
 .footer h1{
-  font-size: 150%;
+  font-size: 125%;
   text-align: right;
 }
 /*Scrollbar*/

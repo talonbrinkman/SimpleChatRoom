@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="main.css?v=<?php echo time(); ?>">
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/56a1441670.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
@@ -21,6 +22,7 @@
         <p>&#8226; Host Identifier</p>
         <p>&#8226; Is Typing feature</p>
         <p>&#8226; New Scrollbar</p>
+        <p>&#8226; Advanced Password Input</p>
         <h1>Patch Notes V2.0</h1>
         <p>&#8226; Bug Fixes</p>
         <p>&#8226; New styling changes</p>
@@ -31,27 +33,50 @@
       </div>
       <div class="login">
         <div class="inputs">
-          <input id="username" placeholder="Username" autocomplete="off" autofocus>
+          <input id="username" placeholder="Username" autocomplete="off">
           <input id="channelName" placeholder="Channel Name" autocomplete="off">
-          <input id="channelPassword" placeholder="Channel Password" autocomplete="off">
+          <div class="password">
+            <input id="channelPassword" placeholder="Channel Password" autocomplete="off" type="text">
+              <span>
+                <i id="eye" class="fa-solid fa-eye" onclick="togglePassword()"></i>
+                <!-- <i id="eyeslash" class="fa-solid fa-eye-slash"></i> -->
+              </span>
+          </div>
         </div>
+        <br>
         <div class="options">
           <input type="button" value="Host" onclick="hostChannel();">
           <input type="button" value="Join" onclick="joinChannel();">
         </div>
       </div>
       <div class="notes" style="grid-column-start: 3;">
+        <!--&#10004;-->
         <h1>Coming in V2.2</h1>
         <p>&#8226; Bug Fixes</p>
         <p>&#8226; Special characters ability</p>
-        <p>&#8226; Advanced Password Input</p>
         <p>&#8226; Simplified Timestamps</p>
+        <p>&#8226; <span>Heartbeat</span></p>
       </div>
     </div>
     <div class="footer">
       <h1>powered by Bain</h1>
     </div>
     <script>
+      var toggle = 0;
+      function togglePassword(){
+        var eye = document.getElementById("eye");
+        var channelPassword = document.getElementById("channelPassword");
+        if(toggle == 0){
+          eye.style.color = "#1a1a1a";
+          channelPassword.type = "password";
+          toggle = 1;
+        }
+        else{
+          eye.style.color = "#ffa845";
+          channelPassword.type = "text";
+          toggle = 0;
+        }
+      }
       function joinChannel(){
         var hostStatus = "false";
         var username = document.getElementById("username").value;
