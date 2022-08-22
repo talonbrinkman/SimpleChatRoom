@@ -12,7 +12,12 @@
   </head>
   <body>
     <div class="header">
-      <h1>Simple Chat Room</h1>
+      <div class="headerTitle">
+        <h1>Simple Chat Room</h1>
+      </div>
+      <div class="activeUsers">
+        <h1 id="activeUsers">Active Users: 0</h1>
+      </div>
     </div>
     <div class="gridContainer">
       <div class="notes">
@@ -32,7 +37,7 @@
       </div>
       <div class="login">
         <div class="inputs">
-          <input id="username" placeholder="Username" autocomplete="off">
+          <input id="username" placeholder="Username" autocomplete="off" autofocus>
           <input id="channelName" placeholder="Channel Name" autocomplete="off">
           <div class="password">
             <input id="channelPassword" placeholder="Channel Password" autocomplete="off" type="password">
@@ -125,6 +130,15 @@
           alert("Error 400");
         }
       }
+      setInterval(function updateUserCount(){
+        var homeScreen = "true";
+        $.post('updateUsers.php',{posthomeScreen:homeScreen},
+        function(data){
+          if(data != ""){
+            $('#activeUsers').html(data);
+          }
+        });
+      }, 1000);
     </script>
   </body>
 </html>

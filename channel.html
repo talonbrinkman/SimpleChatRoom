@@ -93,7 +93,8 @@
         else{
           isTyping = "false";
         }
-        $.post('updateUsers.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword,postisTyping:isTyping},
+        var homeScreen = "false";
+        $.post('updateUsers.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword,postisTyping:isTyping,posthomeScreen:homeScreen},
         function(data){
           if(data != ""){
             $('#usersBar').html(data);
