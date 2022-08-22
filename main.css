@@ -52,7 +52,7 @@ body{
   height: fit-content;
   overflow: auto;
   margin: 8px auto;
-  padding: 8px;
+  padding: 16px;
   border-radius: 15px;
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
@@ -198,11 +198,11 @@ body{
 }
 .login{
   grid-column-start: 2;
-  width: 50%;
-  min-width: 300px;
+  width: 20%;
+  min-width: 210px;
   height: fit-content;
   margin: 8px auto;
-  padding: 8px;
+  padding: 16px;
   border-radius: 15px;
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
@@ -211,7 +211,8 @@ body{
   font-size: 90%;
 }
 .inputs input{
-  width: 60%;
+  width: 90%;
+  min-width: 150px;
   display: inline-block;
 
   border: none;
@@ -227,7 +228,7 @@ body{
 }
 .inputs span{
   position: absolute;
-  right: 20%;
+  right: 5%;
   transform: translate(0, -50%);
   top: 50%;
   font-size: 100%;
@@ -238,7 +239,7 @@ body{
 }
 .options input{
   transition: 0.4s;
-  width: 65%;
+  width: 95%;
   min-width: 165px;
   display: block;
 
@@ -294,6 +295,8 @@ body{
   background-color: var(--darkGrey);
   position: fixed;
   bottom: 0;
+  padding: 16px;
+  box-sizing: border-box;
 }
 .footer h1{
   font-size: 125%;
