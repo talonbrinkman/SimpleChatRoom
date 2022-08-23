@@ -324,8 +324,8 @@ body{
   background: var(--gold);
 }
 .loadingScreen{
-  width: 20vw;
-  height: 20vw;
+  width: 15vw;
+  height: 15vw;
   background-color: rgba(26, 26, 26, 0.8);
   border-radius: 25px;
   position: absolute;
@@ -336,12 +336,12 @@ body{
   bottom: 0;
   visibility: hidden;
   display: table;
-  padding: 30px;
+  padding: 50px;
   box-sizing: border-box;
 }
 .loader {
-  border: 26px solid var(--lightGrey);
-  border-top: 26px solid var(--gold);
+  border: 20px solid var(--lightGrey);
+  border-top: 20px solid var(--gold);
   border-radius: 50%;
   animation: spin 2s linear infinite;
   margin: 0 auto;

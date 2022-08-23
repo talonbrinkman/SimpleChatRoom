@@ -61,8 +61,8 @@
         <p>&#8226; Simplified Timestamps</p>
         <p>&#8226; <span>Heartbeat</span></p>
         <p>&#8226; Advanced Password Input &#10004;</p>
-        <p>&#8226; Duplicate Users & Channels Patch</p>
-        <p>&#8226; Loading Screen</p>
+        <p>&#8226; Duplicate Users & Channels Patch &#9813;</p>
+        <p>&#8226; Loading Screen &#10004;</p>
       </div>
     </div>
     <div class="loadingScreen" id="loadingScreen">
@@ -102,15 +102,26 @@
           var username = $('#username').val();
           var channelName = $('#channelName').val();
           var channelPassword = $('#channelPassword').val();
-
-          $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
-          function(){});
-          var loadingScreen = document.getElementById("loadingScreen");
-          loadingScreen.style.visibility = "visible";
-          setTimeout(function(){
-            //Loading
-            location.href = '/simplechatroom/channel.html';
-          }, 1500);
+          $.post('checkDuplicates.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+          function(data){
+            if(data != ""){
+              //Checks Username Availability
+              if(data == "false"){
+                $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+                function(){});
+                var loadingScreen = document.getElementById("loadingScreen");
+                loadingScreen.style.visibility = "visible";
+                setTimeout(function(){
+                  //Loading
+                  loadingScreen.style.visibility = "hidden";
+                  location.href = '/simplechatroom/channel.html';
+                }, 1500);
+              }
+              else{
+                alert("Username already exists");
+              }
+            }
+          });
         }
         else{
           alert("Error 400");
@@ -132,14 +143,26 @@
           var channelName = $('#channelName').val();
           var channelPassword = $('#channelPassword').val();
 
-          $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
-          function(){});
-          var loadingScreen = document.getElementById("loadingScreen");
-          loadingScreen.style.visibility = "visible";
-          setTimeout(function(){
-            //Loading
-            location.href = '/simplechatroom/channel.html';
-          }, 1500);
+          $.post('checkDuplicates.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+          function(data){
+            if(data != ""){
+              //Checks Username Availability
+              if(data == "false"){
+                $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+                function(){});
+                var loadingScreen = document.getElementById("loadingScreen");
+                loadingScreen.style.visibility = "visible";
+                setTimeout(function(){
+                  //Loading
+                  loadingScreen.style.visibility = "hidden";
+                  location.href = '/simplechatroom/channel.html';
+                }, 1500);
+              }
+              else{
+                alert("Username already exists");
+              }
+            }
+          });
         }
         else{
           alert("Error 400");
