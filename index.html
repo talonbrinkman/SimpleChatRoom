@@ -62,7 +62,11 @@
         <p>&#8226; <span>Heartbeat</span></p>
         <p>&#8226; Advanced Password Input &#10004;</p>
         <p>&#8226; Duplicate Users & Channels Patch</p>
+        <p>&#8226; Loading Screen</p>
       </div>
+    </div>
+    <div class="loadingScreen" id="loadingScreen">
+      <div class="loader"></div>
     </div>
     <div class="footer">
       <h1>powered by Bain</h1>
@@ -101,7 +105,12 @@
 
           $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
           function(){});
-          location.href = '/simplechatroom/channel.html';
+          var loadingScreen = document.getElementById("loadingScreen");
+          loadingScreen.style.visibility = "visible";
+          setTimeout(function(){
+            //Loading
+            location.href = '/simplechatroom/channel.html';
+          }, 1500);
         }
         else{
           alert("Error 400");
@@ -125,7 +134,12 @@
 
           $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
           function(){});
-          location.href = '/simplechatroom/channel.html';
+          var loadingScreen = document.getElementById("loadingScreen");
+          loadingScreen.style.visibility = "visible";
+          setTimeout(function(){
+            //Loading
+            location.href = '/simplechatroom/channel.html';
+          }, 1500);
         }
         else{
           alert("Error 400");

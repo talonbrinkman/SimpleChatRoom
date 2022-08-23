@@ -12,13 +12,13 @@
     <div class="header">
       <h1 id="channelTitle">Simple Chat Room</h1>
     </div>
-    <div class="usersBar" id="usersBar"></div>
-    <div class="messageBox" id="messageBox" onclick="scrollToBottom()"></div>
-    <div class="messageBar">
-      <input type="button" id="exit" value="Leave" onclick="exitChannel();">
-      <input type="text" id="message" placeholder="Message..." autofocus>
-      <input type="button" id="send" value="Send" onclick="sendMessage();">
-    </div>
+      <div class="usersBar" id="usersBar"></div>
+      <div class="messageBox" id="messageBox" onclick="scrollToBottom()"></div>
+      <div class="messageBar">
+        <input type="button" id="exit" value="Leave" onclick="exitChannel();">
+        <input type="text" id="message" placeholder="Message..." autofocus>
+        <input type="button" id="send" value="Send" onclick="sendMessage();">
+      </div>
     <div class="footer">
       <h1>powered by Bain</h1>
     </div>
@@ -52,8 +52,7 @@
       function sendMessage(){
         var message = document.getElementById("message").value;
         //Special Characters
-        var result = message.replaceAll("'","\''");
-        var result = message.replaceAll('"','\"');
+        var result = message.replaceAll("'","''");
 
         $.post('sendMessage.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword,postresult:result},
         function()

@@ -19,6 +19,7 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+/* Home */
 .header{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -72,9 +73,79 @@ body{
   font-weight: bold;
   font-style: italic;
 }
+.login{
+  grid-column-start: 2;
+  width: 20%;
+  min-width: 210px;
+  height: fit-content;
+  margin: 8px auto;
+  padding: 16px;
+  border-radius: 15px;
+  background-color: var(--darkGrey);
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
+  text-align: center;
+  color: white;
+  font-size: 90%;
+}
+.inputs input{
+  width: 90%;
+  min-width: 150px;
+  display: inline-block;
+
+  border: none;
+  border-radius: 15px;
+
+  background-color: var(--lightGrey);
+  outline: none;
+  color: var(--gold);
+  caret-color: var(--gold);
+
+  margin: 4px auto;
+  padding: 8px;
+}
+.inputs span{
+  position: absolute;
+  right: 5%;
+  transform: translate(0, -50%);
+  top: 50%;
+  font-size: 100%;
+  cursor: pointer;
+}
+.password{
+  position: relative;
+}
+#eye{
+  color: var(--darkGrey);
+  transition: 0.4s;
+}
+.options input{
+  transition: 0.4s;
+  width: 95%;
+  min-width: 165px;
+  display: block;
+
+  border: none;
+  border-radius: 15px;
+
+  background-color: var(--lightGrey);
+  outline: none;
+  color: grey;
+
+  margin: 8px auto;
+  padding: 8px;
+  cursor: pointer;
+}
+.options input:hover{
+  transition: 0.4s;
+  color: white;
+  background-color: var(--gold);
+  box-shadow: 0px 0px 10px 1px var(--gold);
+}
+
+/* Channel */
 .messageBox{
   width: 95%;
-  height: 65vh;
+  height: 68vh;
   overflow: auto;
   border: none;
   border-radius: 15px;
@@ -150,7 +221,7 @@ body{
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
   border-radius: 25px;
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -196,73 +267,10 @@ body{
   transition: 0.4s;
   box-shadow: 0px 0px 10px 1px var(--red);
 }
-.login{
-  grid-column-start: 2;
-  width: 20%;
-  min-width: 210px;
-  height: fit-content;
-  margin: 8px auto;
-  padding: 16px;
-  border-radius: 15px;
-  background-color: var(--darkGrey);
-  box-shadow: 0px 0px 10px 1px var(--darkGrey);
-  text-align: center;
-  color: white;
-  font-size: 90%;
-}
-.inputs input{
-  width: 90%;
-  min-width: 150px;
-  display: inline-block;
-
-  border: none;
-  border-radius: 15px;
-
-  background-color: var(--lightGrey);
-  outline: none;
-  color: var(--gold);
-  caret-color: var(--gold);
-
-  margin: 4px auto;
-  padding: 8px;
-}
-.inputs span{
-  position: absolute;
-  right: 5%;
-  transform: translate(0, -50%);
-  top: 50%;
-  font-size: 100%;
-  cursor: pointer;
-}
-.password{
-  position: relative;
-}
-.options input{
-  transition: 0.4s;
-  width: 95%;
-  min-width: 165px;
-  display: block;
-
-  border: none;
-  border-radius: 15px;
-
-  background-color: var(--lightGrey);
-  outline: none;
-  color: grey;
-
-  margin: 8px auto;
-  padding: 8px;
-  cursor: pointer;
-}
-.options input:hover{
-  transition: 0.4s;
-  color: white;
-  background-color: var(--gold);
-  box-shadow: 0px 0px 10px 1px var(--gold);
-}
 .usersBar{
   transition: 0.4s;
   width: 95%;
+  height: fit-content;
   overflow: auto;
   border: none;
   border-radius: 15px;
@@ -272,34 +280,33 @@ body{
   padding: 16px 8px;
   color: white;
 }
-#notTyping{
-  transition: 0.4s;
+.usersBar h1{
   display: inline-block;
+  font-size: 90%;
+  font-weight: lighter;
   margin: 0 16px;
-  padding: 8px 16px;
-  background-color: var(--lightGrey);
+  padding: 8px 22px;
   border-radius: 15px;
+}
+#notTyping{
+  background-color: var(--lightGrey);
 }
 #isTyping{
-  transition: 0.4s;
-  display: inline-block;
-  margin: 0 16px;
-  padding: 8px 16px;
   background-color: var(--gold);
   box-shadow: 0px 0px 10px 1px var(--gold);
-  border-radius: 15px;
 }
+/* Footer o & Misc */
 .footer{
   width: 100%;
+  height: 30px;
   color: white;
   background-color: var(--darkGrey);
   position: fixed;
   bottom: 0;
-  padding: 16px;
+  padding: 8px;
   box-sizing: border-box;
 }
 .footer h1{
-  font-size: 125%;
   text-align: right;
 }
 /*Scrollbar*/
@@ -316,7 +323,33 @@ body{
 ::-webkit-scrollbar-thumb:hover{
   background: var(--gold);
 }
-#eye{
-  color: var(--darkGrey);
-  transition: 0.4s;
+.loadingScreen{
+  width: 20vw;
+  height: 20vw;
+  background-color: rgba(26, 26, 26, 0.8);
+  border-radius: 25px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  visibility: hidden;
+  display: table;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.loader {
+  border: 26px solid var(--lightGrey);
+  border-top: 26px solid var(--gold);
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
