@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Chat Room</title>
+    <link rel="stylesheet" href="main.css?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/56a1441670.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="headerTitle">
+        <h1>Simple Chat Room</h1>
+      </div>
+      <div class="navigation">
+        <ul>
+          <li onclick="home()">Home</li>
+          <li onclick="channels()">Channels</li>
+        </ul>
+      </div>
+    </div>
+    <div class="channelsViewer">
+      <input type="text" placeholder="Username" id="username">
+      <!-- <div class="searchbar">
+        <input type="text" placeholder="Search...">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div> -->
+      <!-- <div class="channel">
+        <h1>MNHS<span>Bain</span></h1>
+        <input type="button" value="Join">
+      </div> -->
+      <div class="channels" id="channels">
+      </div>
+    </div>
+    <div class="loadingScreen" id="loadingScreen">
+      <div class="loader"></div>
+    </div>
+    <div class="footer">
+      <h1>powered by Bain</h1>
+    </div>
+    <script>
+      function home(){
+        //loading Screen Animation
+        document.getElementById("loadingScreen").style.visibility = "visible";
+        setTimeout(function(){
+          //Loading
+          loadingScreen.style.visibility = "hidden";
+          location.href = '/simplechatroom/index.html';
+        }, 1500);
+      }
+      function channels(){
+        //loading Screen Animation
+        document.getElementById("loadingScreen").style.visibility = "visible";
+        setTimeout(function(){
+          //Loading
+          loadingScreen.style.visibility = "hidden";
+          location.href = '/simplechatroom/channels.html';
+        }, 1500);
+      }
+      setInterval(function updateChannels(){
+        $.post('updateChannels.php',{/*post variables*/},
+        function(data){
+          if(data != ""){
+            $('#channels').html(data);
+          }
+        });
+      }, 1000);
+      function joinChannel(){
+        var hostStatus = "false";
+        if(username !== "" && channelName !== "" && channelPassword !== ""){
+          var username = $('#username').val();
+          var channelName = $('#MNHS').val();
+          var channelHost = $('#Bain').val();
+          $.post('checkDuplicates.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+          function(data){
+            if(data != ""){
+              //Checks Username Availability
+              if(data == "false"){
+                $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+                function(){});
+                //loading Screen Animation
+                document.getElementById("loadingScreen").style.visibility = "visible";
+                setTimeout(function(){
+                  //Loading
+                  loadingScreen.style.visibility = "hidden";
+                  location.href = '/simplechatroom/channel.html';
+                }, 1500);
+              }
+              else{
+                alert("Username already exists");
+              }
+            }
+          });
+        }
+        else{
+          alert("Error 400");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -13,6 +13,7 @@
   font-size: 100%;
   font-weight: bold;
   outline: none;
+  transition: 0.5s;
 }
 body{
   background-image: linear-gradient(to bottom right, var(--darkGrey), var(--lightGrey));
@@ -34,11 +35,23 @@ body{
 .header .headerTitle{
   width: fit-content;
 }
-.header .activeUsers{
-  font-size: 50%;
-  color: var(--lightGrey);
+.activeUsers{
+  color: white;
   width: fit-content;
-  margin: auto 0 auto auto;
+  display: inline-block;
+  font-size: 90%;
+}
+.header .navigation{
+  width: 100%;
+  text-align: right;
+}
+.header .navigation li{
+  display: inline-block;
+  margin: 0 0 0 16px;
+}
+.header .navigation li:hover{
+  color: var(--gold);
+  cursor: pointer;
 }
 .gridContainer{
   display: grid;
@@ -116,10 +129,8 @@ body{
 }
 #eye{
   color: var(--darkGrey);
-  transition: 0.4s;
 }
 .options input{
-  transition: 0.4s;
   width: 95%;
   min-width: 165px;
   display: block;
@@ -136,7 +147,6 @@ body{
   cursor: pointer;
 }
 .options input:hover{
-  transition: 0.4s;
   color: white;
   background-color: var(--gold);
   box-shadow: 0px 0px 10px 1px var(--gold);
@@ -244,7 +254,6 @@ body{
   color: var(--gold);
 }
 #send{
-  transition: 0.4s;
   cursor: pointer;
   border: 2px solid var(--gold);
   border-radius: 15px;
@@ -252,11 +261,9 @@ body{
   color: white;
 }
 #send:hover{
-  transition: 0.4s;
   box-shadow: 0px 0px 10px 1px var(--gold);
 }
 #exit{
-  transition: 0.4s;
   cursor: pointer;
   border: 2px solid var(--red);
   border-radius: 15px;
@@ -264,13 +271,12 @@ body{
   color: white;
 }
 #exit:hover{
-  transition: 0.4s;
   box-shadow: 0px 0px 10px 1px var(--red);
 }
 .usersBar{
-  transition: 0.4s;
   width: 95%;
   height: fit-content;
+
   overflow: auto;
   border: none;
   border-radius: 15px;
@@ -279,6 +285,7 @@ body{
   margin: 22px auto;
   padding: 16px 8px;
   color: white;
+  overflow: scroll;
 }
 .usersBar h1{
   display: inline-block;
@@ -307,7 +314,9 @@ body{
   box-sizing: border-box;
 }
 .footer h1{
-  text-align: right;
+  display: inline-block;
+  width: fit-content;
+  float: right;
 }
 /*Scrollbar*/
 ::-webkit-scrollbar{
@@ -339,17 +348,123 @@ body{
   padding: 50px;
   box-sizing: border-box;
 }
-.loader {
-  border: 20px solid var(--lightGrey);
-  border-top: 20px solid var(--gold);
+.loader{
+  border: 15px solid var(--lightGrey);
+  border-top: 15px solid var(--gold);
   border-radius: 50%;
   animation: spin 2s linear infinite;
   margin: 0 auto;
   display: table-cell;
   vertical-align: middle;
 }
-
-@keyframes spin {
+@keyframes spin{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+/* Channels */
+.channelsViewer{
+  width: 50vw;
+  height: 80vh;
+  background-color: var(--darkGrey);
+  margin: 16px auto;
+  padding: 16px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
+}
+.channelsViewer input{
+  display: block;
+  width: 50%;
+  background-color: var(--lightGrey);
+  border-radius: 15px;
+  border: none;
+  margin: 0 auto;
+  padding: 8px;
+  caret-color: var(--gold);
+  color: var(--gold);
+}
+.channelsViewer .searchbar{
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+}
+.channelsViewer .searchbar input{
+  display: block;
+  width: 100%;
+  background-color: var(--lightGrey);
+  border-radius: 15px;
+  border: none;
+  margin: 0 auto;
+  padding: 8px;
+  caret-color: var(--gold);
+  color: var(--gold);
+}
+.channelsViewer .searchbar i{
+  position: absolute;
+  right: -1%;
+  transform: translate(0, -50%);
+  top: 50%;
+  font-size: 100%;
+
+  border-radius: 50%;
+  padding: 8px;
+  color: var(--darkGrey);
+  background-color: var(--lightGrey);
+}
+.channelsViewer .searchbar i:hover{
+  background-color: var(--gold);
+  color: var(--lightGrey);
+  cursor: pointer;
+}
+.channels{
+  width: 90%;
+  max-height: 90%;
+  margin: 16px auto;
+  position: relative;
+  overflow: auto;
+}
+.channel{
+  display: grid;
+  grid-template-columns: 70% auto;
+  grid-template-rows: 100%;
+  background-color: var(--lightGrey);
+  border-radius: 20px;
+  margin: 16px 8px;
+  padding: 8px 12px;
+}
+.channel h1{
+  color: white;
+  font-size: 125%;
+  grid-column-start: 1;
+}
+.channel span{
+  color: var(--gold);
+  font-size: 80%;
+  grid-column-start: 1;
+  display: block;
+}
+.channel input{
+  width: 100%;
+  float: right;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--darkGrey);
+  color: var(--lightGrey);
+  grid-column-start: 2;
+}
+.channel input:hover{
+  background-color: var(--gold);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 1px var(--gold);
+}
+.alert{
+  color: white;
+  width: 50%;
+  margin: 8px auto;
+  padding: 8px 16px;
+  text-align: center;
+  background-color: var(--lightGrey);
+  border-radius: 20px;
+  font-size: 90%;
 }

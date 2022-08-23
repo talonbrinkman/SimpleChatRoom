@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -15,12 +14,24 @@
       <div class="headerTitle">
         <h1>Simple Chat Room</h1>
       </div>
-      <div class="activeUsers">
-        <h1 id="activeUsers">Active Users: 0</h1>
+      <div class="navigation">
+        <ul>
+          <li onclick="home()">Home</li>
+          <li onclick="channels()">Channels</li>
+        </ul>
       </div>
     </div>
     <div class="gridContainer">
       <div class="notes">
+        <h1>Patch Notes V2.2</h1>
+        <p>&#8226; Bug fixes</p>
+        <p>&#8226; Special characters ability</p>
+        <p>&#8226; Advanced Password Input</p>
+        <p>&#8226; Duplicate Users Patch &#9813;</p>
+        <p>&#8226; Loading Screen</p>
+        <p>&#8226; Public Channels</p>
+        <p>&#8226; <span>Channel Viewer</span></p>
+
         <h1>Patch Notes V2.1</h1>
         <p>&#8226; Bug Fixes</p>
         <p>&#8226; <span>Active Users</span> feature</p>
@@ -57,21 +68,39 @@
         <!--&#10004;-->
         <h1>Coming in V2.2</h1>
         <p>&#8226; Bug Fixes</p>
-        <p>&#8226; Special characters ability &#10004;</p>
         <p>&#8226; Simplified Timestamps</p>
         <p>&#8226; <span>Heartbeat</span></p>
-        <p>&#8226; Advanced Password Input &#10004;</p>
-        <p>&#8226; Duplicate Users & Channels Patch &#9813;</p>
-        <p>&#8226; Loading Screen &#10004;</p>
+
       </div>
     </div>
     <div class="loadingScreen" id="loadingScreen">
       <div class="loader"></div>
     </div>
     <div class="footer">
+      <div class="activeUsers">
+        <h1 id="activeUsers">Active Users: 0</h1>
+      </div>
       <h1>powered by Bain</h1>
     </div>
     <script>
+      function home(){
+        //loading Screen Animation
+        document.getElementById("loadingScreen").style.visibility = "visible";
+        setTimeout(function(){
+          //Loading
+          loadingScreen.style.visibility = "hidden";
+          location.href = '/simplechatroom/index.html';
+        }, 1500);
+      }
+      function channels(){
+        //loading Screen Animation
+        document.getElementById("loadingScreen").style.visibility = "visible";
+        setTimeout(function(){
+          //Loading
+          loadingScreen.style.visibility = "hidden";
+          location.href = '/simplechatroom/channels.html';
+        }, 1500);
+      }
       var toggle = 1;
       function togglePassword(){
         var eye = document.getElementById("eye");
@@ -98,7 +127,7 @@
         sessionStorage.setItem("channelName", channelName);
         sessionStorage.setItem("channelPassword", channelPassword);
 
-        if(username !== "" && channelName !== "" && channelPassword !== ""){
+        if(username !== "" && channelName !== ""){
           var username = $('#username').val();
           var channelName = $('#channelName').val();
           var channelPassword = $('#channelPassword').val();
@@ -138,7 +167,7 @@
         sessionStorage.setItem("channelName", channelName);
         sessionStorage.setItem("channelPassword", channelPassword);
 
-        if(username !== "" && channelName !== "" && channelPassword !== ""){
+        if(username !== "" && channelName !== ""){
           var username = $('#username').val();
           var channelName = $('#channelName').val();
           var channelPassword = $('#channelPassword').val();
