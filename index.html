@@ -21,31 +21,7 @@
         </ul>
       </div>
     </div>
-    <div class="gridContainer">
-      <div class="notes">
-        <h1>Patch Notes V2.2</h1>
-        <p>&#8226; Bug fixes</p>
-        <p>&#8226; Special characters ability</p>
-        <p>&#8226; Advanced Password Input</p>
-        <p>&#8226; Duplicate Users Patch &#9813;</p>
-        <p>&#8226; Loading Screen</p>
-        <p>&#8226; Public Channels</p>
-        <p>&#8226; <span>Channel Viewer</span></p>
-
-        <h1>Patch Notes V2.1</h1>
-        <p>&#8226; Bug Fixes</p>
-        <p>&#8226; <span>Active Users</span> feature</p>
-        <p>&#8226; Host Identifier</p>
-        <p>&#8226; Is Typing feature</p>
-        <p>&#8226; New Scrollbar</p>
-        <h1>Patch Notes V2.0</h1>
-        <p>&#8226; Bug Fixes</p>
-        <p>&#8226; New styling changes</p>
-        <p>&#8226; <span>Enter Key Send</span> Feature added</p>
-        <p>&#8226; <span>Auto Leave</span> feature added</p>
-        <p>&#8226; <span>Patch Notes</span> feature added</p>
-        <p>&#8226; Faster message update timings</p>
-      </div>
+    <div class="homeContent">
       <div class="login">
         <div class="inputs">
           <input id="username" placeholder="Username" autocomplete="off" autofocus>
@@ -64,16 +40,37 @@
           <input type="button" value="Join" onclick="joinChannel();">
         </div>
       </div>
-      <div class="notes" style="grid-column-start: 3;">
-        <!--&#10004;-->
-        <h1>Coming in V2.3</h1>
-        <p>&#8226; Bug Fixes</p>
-        <p>&#8226; Simplified Timestamps</p>
-        <p>&#8226; <span>Heartbeat</span></p>
+      <div class="patchNotes">
+          <h1>Patch Notes V3.0</h1>
+          <p>&#8226; <span>Instructions</span></p>
+          <p>&#8226; <span>Port Forwarding</span></p>
 
-      </div>
+          <h1>Patch Notes V2.2</h1>
+          <p>&#8226; Bug fixes</p>
+          <p>&#8226; Special characters ability</p>
+          <p>&#8226; Advanced Password Input</p>
+          <p>&#8226; Duplicate Users Patch &#9813;</p>
+          <p>&#8226; Loading Screen</p>
+          <p>&#8226; Public Channels</p>
+          <p>&#8226; <span>Channel Viewer</span></p>
+
+          <h1>Patch Notes V2.1</h1>
+          <p>&#8226; Bug Fixes</p>
+          <p>&#8226; <span>Active Users</span> feature</p>
+          <p>&#8226; Host Identifier</p>
+          <p>&#8226; Is Typing feature</p>
+          <p>&#8226; New Scrollbar</p>
+
+          <h1>Patch Notes V2.0</h1>
+          <p>&#8226; Bug Fixes</p>
+          <p>&#8226; New styling changes</p>
+          <p>&#8226; <span>Enter Key Send</span> Feature added</p>
+          <p>&#8226; <span>Auto Leave</span> feature added</p>
+          <p>&#8226; <span>Patch Notes</span> feature added</p>
+          <p>&#8226; Faster message update timings</p>
+        </div>
     </div>
-    <div class="loadingScreen" id="loadingScreen">
+    <div id="loadingScreen">
       <div class="loader"></div>
     </div>
     <div class="footer">
@@ -167,7 +164,7 @@
         sessionStorage.setItem("channelName", channelName);
         sessionStorage.setItem("channelPassword", channelPassword);
 
-        if(username !== "" && channelName !== ""){
+        if(username !== "" && channelName !== "" && !channelName.includes(" ")){
           var username = $('#username').val();
           var channelName = $('#channelName').val();
           var channelPassword = $('#channelPassword').val();

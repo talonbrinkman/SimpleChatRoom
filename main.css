@@ -1,19 +1,18 @@
 :root {
   --gold: #ffa845;
+  --red: #ff5447;
   --darkGrey: #1a1a1a;
   --lightGrey: #333333;
-  --red: #ff5447;
 }
 *{
   margin: 0;
-  padding: 0;
-  list-style: none;
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
   font-size: 100%;
   font-weight: bold;
   outline: none;
   transition: 0.5s;
+  border-radius: 15px;
 }
 body{
   background-image: linear-gradient(to bottom right, var(--darkGrey), var(--lightGrey));
@@ -23,14 +22,14 @@ body{
 /* Home */
 .header{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   width: 100%;
-  font-size: 150%;
+  grid-template-columns: auto fit-content(100%);
+  font-size: 120%;
   background-color: var(--darkGrey);
-  box-shadow: 0px 0px 10px 1px var(--lightGrey);
   color: white;
   padding: 12px;
   box-sizing: border-box;
+  border-radius: 0;
 }
 .header .headerTitle{
   width: fit-content;
@@ -43,7 +42,9 @@ body{
 }
 .header .navigation{
   width: 100%;
+  height: 100%;
   text-align: right;
+  box-sizing: border-box;
 }
 .header .navigation li{
   display: inline-block;
@@ -53,47 +54,44 @@ body{
   color: var(--gold);
   cursor: pointer;
 }
-.gridContainer{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 100%;
-  grid-gap: 8px;
+.homeContent{
+  width: 40%;
+  margin: 8px auto;
 }
-.notes{
-  grid-column-start: 1;
+/* Patch Notes*/
+.patchNotes{
   width: 50%;
-  max-height: 300px;
+  max-height: 40vh;
   height: fit-content;
   overflow: auto;
-  margin: 8px auto;
+  margin: 32px auto;
   padding: 16px;
-  border-radius: 15px;
+
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
 }
-.notes h1{
+.patchNotes h1{
   color: var(--gold);
   text-align: center;
   margin: 12px;
 }
-.notes p{
+.patchNotes p{
   color: var(--lightGrey);
   font-size: 90%;
   margin: 12px;
   font-weight: normal;
 }
-.notes span{
+.patchNotes span{
   font-weight: bold;
   font-style: italic;
 }
 .login{
   grid-column-start: 2;
-  width: 20%;
+  width: 30%;
   min-width: 210px;
   height: fit-content;
   margin: 8px auto;
   padding: 16px;
-  border-radius: 15px;
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
   text-align: center;
@@ -106,7 +104,7 @@ body{
   display: inline-block;
 
   border: none;
-  border-radius: 15px;
+
 
   background-color: var(--lightGrey);
   outline: none;
@@ -136,7 +134,7 @@ body{
   display: block;
 
   border: none;
-  border-radius: 15px;
+
 
   background-color: var(--lightGrey);
   outline: none;
@@ -158,7 +156,7 @@ body{
   height: 68vh;
   overflow: auto;
   border: none;
-  border-radius: 15px;
+
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
   margin: 22px auto;
@@ -184,7 +182,7 @@ body{
   word-break: break-all;
 
   border: none;
-  border-radius: 15px;
+
 
   margin: 16px 51% 16px 16px;
   padding: 8px 12px;
@@ -209,7 +207,7 @@ body{
   word-break: break-all;
 
   border: none;
-  border-radius: 15px;
+
 
   margin: 16px 16px 16px 51%;
   padding: 8px 12px;
@@ -241,7 +239,7 @@ body{
   min-width: 50px;
 
   border: none;
-  border-radius: 15px;
+
 
   background-color: var(--darkGrey);
 
@@ -256,7 +254,7 @@ body{
 #send{
   cursor: pointer;
   border: 2px solid var(--gold);
-  border-radius: 15px;
+
   background-color: var(--gold);
   color: white;
 }
@@ -266,7 +264,7 @@ body{
 #exit{
   cursor: pointer;
   border: 2px solid var(--red);
-  border-radius: 15px;
+
   background-color: var(--red);
   color: white;
 }
@@ -277,15 +275,13 @@ body{
   width: 95%;
   height: fit-content;
 
-  overflow: auto;
   border: none;
-  border-radius: 15px;
+
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
   margin: 22px auto;
   padding: 16px 8px;
   color: white;
-  overflow: scroll;
 }
 .usersBar h1{
   display: inline-block;
@@ -293,7 +289,7 @@ body{
   font-weight: lighter;
   margin: 0 16px;
   padding: 8px 22px;
-  border-radius: 15px;
+
 }
 #notTyping{
   background-color: var(--lightGrey);
@@ -312,6 +308,7 @@ body{
   bottom: 0;
   padding: 8px;
   box-sizing: border-box;
+  border-radius: 0;
 }
 .footer h1{
   display: inline-block;
@@ -332,7 +329,7 @@ body{
 ::-webkit-scrollbar-thumb:hover{
   background: var(--gold);
 }
-.loadingScreen{
+#loadingScreen{
   width: 15vw;
   height: 15vw;
   background-color: rgba(26, 26, 26, 0.8);
@@ -364,6 +361,7 @@ body{
 /* Channels */
 .channelsViewer{
   width: 50vw;
+  min-width: 300px;
   height: 80vh;
   background-color: var(--darkGrey);
   margin: 16px auto;
@@ -376,7 +374,7 @@ body{
   display: block;
   width: 50%;
   background-color: var(--lightGrey);
-  border-radius: 15px;
+
   border: none;
   margin: 0 auto;
   padding: 8px;
@@ -392,7 +390,7 @@ body{
   display: block;
   width: 100%;
   background-color: var(--lightGrey);
-  border-radius: 15px;
+
   border: none;
   margin: 0 auto;
   padding: 8px;
@@ -459,9 +457,9 @@ body{
   box-shadow: 0px 0px 10px 1px var(--gold);
 }
 .alert{
-  color: white;
-  width: 50%;
-  margin: 8px auto;
+  color: grey;
+  width: 40%;
+  margin: 16px auto;
   padding: 8px 16px;
   text-align: center;
   background-color: var(--lightGrey);
