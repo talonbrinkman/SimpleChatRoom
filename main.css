@@ -27,7 +27,7 @@ body{
   font-size: 120%;
   background-color: var(--darkGrey);
   color: white;
-  padding: 12px;
+  padding: 16px;
   box-sizing: border-box;
   border-radius: 0;
 }
@@ -56,11 +56,13 @@ body{
 }
 .homeContent{
   width: 40%;
+  min-width: 500px;
   margin: 8px auto;
 }
 /* Patch Notes*/
 .patchNotes{
   width: 50%;
+  min-width: 250px;
   max-height: 40vh;
   height: fit-content;
   overflow: auto;
@@ -301,12 +303,11 @@ body{
 /* Footer o & Misc */
 .footer{
   width: 100%;
-  height: 30px;
   color: white;
   background-color: var(--darkGrey);
   position: fixed;
   bottom: 0;
-  padding: 8px;
+  padding: 16px;
   box-sizing: border-box;
   border-radius: 0;
 }
