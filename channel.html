@@ -11,6 +11,7 @@
     <div class="header">
       <h1 id="channelTitle">Simple Chat Room</h1>
     </div>
+    <div class="conversationContent">
       <div class="usersBar" id="usersBar"></div>
       <div class="messageBox" id="messageBox" onclick="scrollToBottom()"></div>
       <div class="messageBar">
@@ -18,6 +19,7 @@
         <input type="text" id="message" placeholder="Message..." autofocus>
         <input type="button" id="send" value="Send" onclick="sendMessage();">
       </div>
+    </div>
     <script>
       //Variables
       var hostStatus = sessionStorage.getItem("hostStatus");
@@ -104,4 +106,12 @@
       // });
     </script>
   </body>
+  <footer>
+    <div class="footerContent">
+      <div class="activeUsers">
+        <h1 id="activeUsers">Active Users: 0</h1>
+      </div>
+      <h1>powered by Bain</h1>
+    </div>
+  </footer>
 </html>

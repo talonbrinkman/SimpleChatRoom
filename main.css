@@ -13,6 +13,7 @@
   outline: none;
   transition: 0.5s;
   border-radius: 15px;
+  box-sizing: border-box;
 }
 body{
   background-image: linear-gradient(to bottom right, var(--darkGrey), var(--lightGrey));
@@ -68,7 +69,6 @@ body{
   overflow: auto;
   margin: 32px auto;
   padding: 16px;
-
   background-color: var(--darkGrey);
   box-shadow: 0px 0px 10px 1px var(--darkGrey);
 }
@@ -104,15 +104,11 @@ body{
   width: 90%;
   min-width: 150px;
   display: inline-block;
-
   border: none;
-
-
   background-color: var(--lightGrey);
   outline: none;
   color: var(--gold);
   caret-color: var(--gold);
-
   margin: 4px auto;
   padding: 8px;
 }
@@ -134,10 +130,7 @@ body{
   width: 95%;
   min-width: 165px;
   display: block;
-
   border: none;
-
-
   background-color: var(--lightGrey);
   outline: none;
   color: grey;
@@ -151,155 +144,6 @@ body{
   background-color: var(--gold);
   box-shadow: 0px 0px 10px 1px var(--gold);
 }
-
-/* Channel */
-.messageBox{
-  width: 95%;
-  height: 68vh;
-  overflow: auto;
-  border: none;
-
-  background-color: var(--darkGrey);
-  box-shadow: 0px 0px 10px 1px var(--darkGrey);
-  margin: 22px auto;
-  padding: 8px;
-}
-#line{
-  width: 95%;
-  height: 1px;
-  margin: 0 auto;
-  background-color: var(--lightGrey);
-  display: inline-block;
-}
-#serverMessage{
-  display: block;
-  display: inline-block;
-  color: white;
-  background-color: var(--lightGrey);
-
-  width: fit-content;
-  min-width: 150px;
-  max-width: 600px;
-
-  word-break: break-all;
-
-  border: none;
-
-
-  margin: 16px 51% 16px 16px;
-  padding: 8px 12px;
-
-  font-weight: bold;
-}
-#serverMessage span{
-  color: #ffa845;
-  font-size: 55%;
-  font-weight: normal;
-}
-#userMessage{
-  float: right;
-  text-align: right;
-  display: inline-block;
-  color: white;
-  background-color: var(--lightGrey);
-
-  width: fit-content;
-  max-width: 600px;
-
-  word-break: break-all;
-
-  border: none;
-
-
-  margin: 16px 16px 16px 51%;
-  padding: 8px 12px;
-
-  font-weight: bold;
-}
-#userMessage span{
-  color: #ffa845;
-  font-size: 55%;
-  font-weight: normal;
-}
-.messageBar{
-  display: grid;
-  width: 95%;
-  margin: 8px auto;
-  padding: 4px;
-  grid-template-columns: 10% auto 10%;
-  background-color: var(--darkGrey);
-  box-shadow: 0px 0px 10px 1px var(--darkGrey);
-  border-radius: 25px;
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-.messageBar input{
-  width: 95%;
-  min-width: 50px;
-
-  border: none;
-
-
-  background-color: var(--darkGrey);
-
-  margin: 8px auto;
-  padding: 8px;
-}
-#message{
-  background-color: var(--lightGrey);
-  caret-color: var(--gold);
-  color: var(--gold);
-}
-#send{
-  cursor: pointer;
-  border: 2px solid var(--gold);
-
-  background-color: var(--gold);
-  color: white;
-}
-#send:hover{
-  box-shadow: 0px 0px 10px 1px var(--gold);
-}
-#exit{
-  cursor: pointer;
-  border: 2px solid var(--red);
-
-  background-color: var(--red);
-  color: white;
-}
-#exit:hover{
-  box-shadow: 0px 0px 10px 1px var(--red);
-}
-.usersBar{
-  width: 95%;
-  height: fit-content;
-
-  border: none;
-
-  background-color: var(--darkGrey);
-  box-shadow: 0px 0px 10px 1px var(--darkGrey);
-  margin: 22px auto;
-  padding: 16px 8px;
-  color: white;
-}
-.usersBar h1{
-  display: inline-block;
-  font-size: 90%;
-  font-weight: lighter;
-  margin: 0 16px;
-  padding: 8px 22px;
-
-}
-#notTyping{
-  background-color: var(--lightGrey);
-}
-#isTyping{
-  background-color: var(--gold);
-  box-shadow: 0px 0px 10px 1px var(--gold);
-}
 /* Footer o & Misc */
 footer{
   width: 100%;
@@ -307,13 +151,25 @@ footer{
   background-color: var(--darkGrey);
   position: fixed;
   bottom: 0;
-  padding: 16px;
+  padding: 32px;
   box-sizing: border-box;
   border-radius: 0;
+  position: relative;
+  margin-top: 400px;
+}
+footer .footerContent{
+  padding: 16px;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  box-sizing: border-box;
 }
 footer h1{
   display: inline-block;
-  width: fit-content;
   float: right;
 }
 /*Scrollbar*/
@@ -466,4 +322,131 @@ footer h1{
   background-color: var(--lightGrey);
   border-radius: 20px;
   font-size: 90%;
+}
+/* Conversation Content */
+.conversationContent{
+  display: grid;
+  grid-gap: 16px;
+  grid-template-rows: fit-content auto fit-content;
+  padding: 32px;
+}
+.usersBar{
+  width: 100%;
+  margin: 0 auto;
+  padding: 4px;
+  color: white;
+  background-color: var(--darkGrey);
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
+  border-radius: 25px;
+}
+.usersBar h1{
+  display: inline-block;
+  font-size: 90%;
+  font-weight: lighter;
+  margin: 16px;
+  padding: 8px 22px;
+}
+#notTyping{
+  background-color: var(--lightGrey);
+}
+#isTyping{
+  background-color: var(--gold);
+  box-shadow: 0px 0px 10px 1px var(--gold);
+}
+.messageBox{
+  width: 100%;
+  height: 68vh;
+  overflow: auto;
+  border: none;
+  background-color: var(--darkGrey);
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
+  margin: 0 auto;
+  padding: 16px;
+}
+#line{
+  width: 95%;
+  height: 1px;
+  margin: 0 auto;
+  background-color: var(--lightGrey);
+  display: inline-block;
+}
+#serverMessage{
+  display: block;
+  display: inline-block;
+  color: white;
+  background-color: var(--lightGrey);
+  width: fit-content;
+  min-width: 150px;
+  max-width: 600px;
+  word-break: break-all;
+  border: none;
+  margin: 16px 51% 16px 16px;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+#serverMessage span{
+  color: #ffa845;
+  font-size: 55%;
+  font-weight: normal;
+}
+#userMessage{
+  float: right;
+  text-align: right;
+  display: inline-block;
+  color: white;
+  background-color: var(--lightGrey);
+  width: fit-content;
+  max-width: 600px;
+  word-break: break-all;
+  border: none;
+  margin: 16px 16px 16px 51%;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+#userMessage span{
+  color: #ffa845;
+  font-size: 55%;
+  font-weight: normal;
+}
+.messageBar{
+  display: grid;
+  grid-gap: 16px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8px 16px;
+  grid-template-columns: 10% auto 10%;
+  background-color: var(--darkGrey);
+  box-shadow: 0px 0px 10px 1px var(--darkGrey);
+}
+.messageBar input{
+  width: 100%;
+  min-width: 50px;
+  margin: 8px auto;
+  padding: 8px;
+  border: none;
+  background-color: var(--darkGrey);
+}
+#message{
+  background-color: var(--lightGrey);
+  caret-color: var(--gold);
+  color: var(--gold);
+}
+#send{
+  cursor: pointer;
+  border: 2px solid var(--gold);
+  background-color: var(--gold);
+  color: white;
+}
+#send:hover{
+  box-shadow: 0px 0px 10px 1px var(--gold);
+}
+#exit{
+  cursor: pointer;
+  border: 2px solid var(--red);
+  background-color: var(--red);
+  color: white;
+  padding: 0 8px;
+}
+#exit:hover{
+  box-shadow: 0px 0px 10px 1px var(--red);
 }
