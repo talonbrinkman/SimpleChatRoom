@@ -79,7 +79,7 @@
         sessionStorage.setItem("channelName", channelName);
         sessionStorage.setItem("channelPassword", channelPassword);
 
-        if(username !== "" && channelName !== ""){
+        if(username !== ""){
           $.post('checkDuplicates.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
           function(data){
             if(data != ""){
@@ -102,7 +102,7 @@
           });
         }
         else{
-          alert("Error 400");
+          alert("Username Required");
         }
       }
     </script>

@@ -4,6 +4,10 @@
   --darkGrey: #1a1a1a;
   --lightGrey: #333333;
 }
+html{
+  position: relative;
+  min-height: 100vh;
+}
 *{
   margin: 0;
   text-decoration: none;
@@ -19,6 +23,7 @@ body{
   background-image: linear-gradient(to bottom right, var(--darkGrey), var(--lightGrey));
   background-repeat: no-repeat;
   background-attachment: fixed;
+  padding-bottom: 2%;
 }
 /* Home */
 .header{
@@ -63,7 +68,7 @@ body{
 }
 /* Patch Notes*/
 .patchNotes{
-  width: 50%;
+  width: 60%;
   min-width: 250px;
   max-height: 40vh;
   height: fit-content;
@@ -90,8 +95,9 @@ body{
 }
 .login{
   grid-column-start: 2;
-  width: 30%;
+  width: 60%;
   min-width: 210px;
+  max-width: 275px;
   height: fit-content;
   margin: 8px auto;
   padding: 16px;
@@ -115,7 +121,7 @@ body{
 }
 .inputs span{
   position: absolute;
-  right: 15px;
+  right: 20px;
   transform: translate(0, -50%);
   top: 50%;
   font-size: 100%;
@@ -150,13 +156,12 @@ footer{
   width: 100%;
   color: white;
   background-color: var(--darkGrey);
-  position: fixed;
+  position: absolute;
   bottom: 0;
+  width: 100%;
   padding: 32px;
   box-sizing: border-box;
   border-radius: 0;
-  position: relative;
-  margin-top: 400px;
 }
 footer .footerContent{
   padding: 16px;
