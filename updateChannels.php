@@ -17,7 +17,7 @@
   if(mysqli_num_rows($result) > 0){
     while ($row = mysqli_fetch_assoc($result)){
       if($row['channelPassword'] == '' && (str_contains($row['channelHost'],$search) || str_contains($row['channelName'],$search))){
-        echo '<div class="channel"><h1>' . $row['channelName'] . '<span>' . $row['channelHost'] . '</span></h1><button id="join" onclick="joinChannel()" disabled data-value="' . $row['channelName'] . '">Join</div>';
+        echo '<div class="channel"><h1>' . $row['channelName'] . '<span>' . $row['channelHost'] . '</span></h1><button id="join" onclick="joinChannel(\'' . $row['channelName'] . '\')">Join</div>';
       }
     }
   }

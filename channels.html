@@ -68,10 +68,10 @@
           }
         });
       }, 1000);
-      function joinChannel(){
+      function joinChannel(x){
         var hostStatus = "false";
         var username = document.getElementById("username").value;
-        var channelName = document.getElementById("join").getAttribute('data-value');
+        var channelName = String(x);
         var channelPassword = "";
 
         sessionStorage.setItem("hostStatus", hostStatus);

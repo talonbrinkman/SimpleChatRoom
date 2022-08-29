@@ -313,10 +313,10 @@ footer h1{
   grid-column-start: 2;
 }
 .channel button:hover{
-  /* background-color: var(--gold);
+  background-color: var(--gold);
   color: white;
-  box-shadow: 0px 0px 10px 1px var(--gold); */
-  cursor: no-drop;
+  box-shadow: 0px 0px 10px 1px var(--gold);
+  cursor: pointer;
 }
 .alert{
   color: white;
