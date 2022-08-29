@@ -22,16 +22,19 @@
       </div>
     </div>
     <div class="channelsViewer">
-      <input type="text" placeholder="Username" id="username">
-      <!-- <div class="searchbar">
-        <input type="text" placeholder="Search...">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div> -->
-      <!-- <div class="channel">
-        <h1>MNHS<span>Bain</span></h1>
-        <input type="button" value="Join">
-      </div> -->
+      <div class="channelsViewerOptions">
+        <input type="text" placeholder="Username" id="username">
+        <div class="searchbar">
+          <input type="text" placeholder="Search..." id="searchbar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+
       <div class="channels" id="channels">
+        <!--<div class="channel">
+          <h1>MNHS<span>Bain</span></h1>
+          <input type="button" value="Join">
+        </div>-->
       </div>
     </div>
     <div class="loadingScreen" id="loadingScreen">
@@ -57,7 +60,8 @@
         }, 1500);
       }
       setInterval(function updateChannels(){
-        $.post('updateChannels.php',{/*post variables*/},
+        var search = document.getElementById("searchbar").value;
+        $.post('updateChannels.php',{postsearch:search},
         function(data){
           if(data != ""){
             $('#channels').html(data);
@@ -66,10 +70,16 @@
       }, 1000);
       function joinChannel(){
         var hostStatus = "false";
-        if(username !== "" && channelName !== "" && channelPassword !== ""){
-          var username = $('#username').val();
-          var channelName = $('#MNHS').val();
-          var channelHost = $('#Bain').val();
+        var username = document.getElementById("username").value;
+        var channelName = document.getElementById("join").getAttribute('data-value');
+        var channelPassword = "";
+
+        sessionStorage.setItem("hostStatus", hostStatus);
+        sessionStorage.setItem("username", username);
+        sessionStorage.setItem("channelName", channelName);
+        sessionStorage.setItem("channelPassword", channelPassword);
+
+        if(username !== "" && channelName !== ""){
           $.post('checkDuplicates.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
           function(data){
             if(data != ""){

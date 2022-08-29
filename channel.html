@@ -51,11 +51,12 @@
         var message = document.getElementById("message").value;
         //Special Characters
         var result = message.replaceAll("'","''");
-
-        $.post('sendMessage.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword,postresult:result},
-        function()
-        {});
-        document.getElementById("message").value = "";
+        if(message !== ""){
+          $.post('sendMessage.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword,postresult:result},
+          function()
+          {});
+          document.getElementById("message").value = "";
+        }
       }
       //Exit Channel Method
       function exitChannel(){
