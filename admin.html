@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Chat Room - Admin</title>
+    <link rel="stylesheet" href="main.css?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/56a1441670.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="headerTitle">
+        <h1>Simple Chat Room</h1>
+      </div>
+      <div class="navigation">
+        <ul>
+          <li onclick="home()">Home</li>
+          <li onclick="channels()">Channels</li>
+        </ul>
+      </div>
+    </div>
+    <div class="usersViewer">
+      <div class="searchbar">
+        <input type="text" placeholder="Search..." id="searchbar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <div class="users" id="users">
+        <!-- <div class="user">
+          <h1>Bain <span>MNHS</span></h1>
+        </div> -->
+      </div>
+    </div>
+    <div class="loadingScreen" id="loadingScreen">
+      <div class="loader"></div>
+    </div>
+    <script>
+      function home(){
+        //loading Screen Animation
+        document.getElementById("loadingScreen").style.visibility = "visible";
+        setTimeout(function(){
+          //Loading
+          loadingScreen.style.visibility = "hidden";
+          location.href = '/simplechatroom/index.html';
+        }, 1500);
+      }
+      function channels(){
+        //loading Screen Animation
+        document.getElementById("loadingScreen").style.visibility = "visible";
+        setTimeout(function(){
+          //Loading
+          loadingScreen.style.visibility = "hidden";
+          location.href = '/simplechatroom/channels.html';
+        }, 1500);
+      }
+      setInterval(function getUsers(){
+        var search = document.getElementById("searchbar").value;
+        $.post('getUsers.php',{postsearch:search},
+        function(data){
+          if(data != ""){
+            $('#users').html(data);
+          }
+        });
+      }, 1000);
+      setInterval(function updateUserCount(){
+        var homeScreen = "true";
+        $.post('updateUsers.php',{posthomeScreen:homeScreen},
+        function(data){
+          if(data != ""){
+            $('#activeUsers').html(data);
+          }
+        });
+      }, 1000);
+    </script>
+  </body>
+  <footer>
+    <div class="footerContent">
+      <div class="activeUsers">
+        <h1 id="activeUsers">Active Users: 0</h1>
+      </div>
+      <h1>powered by Bain</h1>
+    </div>
+  </footer>
+</html>

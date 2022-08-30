@@ -151,76 +151,6 @@ body{
   background-color: var(--gold);
   box-shadow: 0px 0px 10px 1px var(--gold);
 }
-/* Footer o & Misc */
-footer{
-  width: 100%;
-  color: white;
-  background-color: var(--darkGrey);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 32px;
-  box-sizing: border-box;
-  border-radius: 0;
-}
-footer .footerContent{
-  padding: 16px;
-  width: 100%;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  box-sizing: border-box;
-}
-footer h1{
-  display: inline-block;
-  float: right;
-}
-/*Scrollbar*/
-::-webkit-scrollbar{
-  width: 8px;
-}
-::-webkit-scrollbar-track{
-  background: var(--darkGrey);
-}
-::-webkit-scrollbar-thumb{
-  background: var(--lightGrey);
-  border-radius: 20px;
-}
-::-webkit-scrollbar-thumb:hover{
-  background: var(--gold);
-}
-#loadingScreen{
-  width: 15vw;
-  height: 15vw;
-  background-color: rgba(26, 26, 26, 0.8);
-  border-radius: 25px;
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  visibility: hidden;
-  display: table;
-  padding: 50px;
-  box-sizing: border-box;
-}
-.loader{
-  border: 15px solid var(--lightGrey);
-  border-top: 15px solid var(--gold);
-  border-radius: 50%;
-  animation: spin 2s linear infinite;
-  margin: 0 auto;
-  display: table-cell;
-  vertical-align: middle;
-}
-@keyframes spin{
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 /* Channels */
 .channelsViewer{
   width: 50vw;
@@ -249,12 +179,12 @@ footer h1{
   caret-color: var(--gold);
   color: var(--gold);
 }
-.channelsViewer .searchbar{
+.searchbar{
   width: 100%;
   margin: 0 auto;
   position: relative;
 }
-.channelsViewer .searchbar input{
+.searchbar input{
   display: block;
   width: 100%;
   background-color: var(--lightGrey);
@@ -265,7 +195,7 @@ footer h1{
   caret-color: var(--gold);
   color: var(--gold);
 }
-.channelsViewer .searchbar i{
+.searchbar i{
   position: absolute;
   right: 0;
   transform: translate(0, -50%);
@@ -276,7 +206,7 @@ footer h1{
   color: var(--darkGrey);
   background-color: var(--lightGrey);
 }
-.channelsViewer .searchbar i:hover{
+.searchbar i:hover{
   background-color: var(--gold);
   color: var(--lightGrey);
   cursor: pointer;
@@ -460,4 +390,105 @@ footer h1{
 }
 #exit:hover{
   box-shadow: 0px 0px 10px 1px var(--red);
+}
+/* Footer o & Misc */
+footer{
+  width: 100%;
+  color: white;
+  background-color: var(--darkGrey);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 32px;
+  box-sizing: border-box;
+  border-radius: 0;
+}
+footer .footerContent{
+  padding: 16px;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  box-sizing: border-box;
+}
+footer h1{
+  display: inline-block;
+  float: right;
+}
+/*Scrollbar*/
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background: var(--darkGrey);
+}
+::-webkit-scrollbar-thumb{
+  background: var(--lightGrey);
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: var(--gold);
+}
+#loadingScreen{
+  width: 15vw;
+  height: 15vw;
+  background-color: rgba(26, 26, 26, 0.8);
+  border-radius: 25px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  visibility: hidden;
+  display: table;
+  padding: 50px;
+  box-sizing: border-box;
+}
+.loader{
+  border: 15px solid var(--lightGrey);
+  border-top: 15px solid var(--gold);
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+  display: table-cell;
+  vertical-align: middle;
+}
+@keyframes spin{
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Admin Tools*/
+.usersViewer{
+  width: 50%;
+  height: 50vh;
+  margin: 16px auto;
+  padding: 32px;
+  background-color: var(--darkGrey);
+  overflow: auto;
+}
+.usersViewer input{
+  width: 100%;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 8px;
+  bor
+}
+.users{
+  grid-row-start: 2;
+}
+.user{
+  width: 75%;
+  margin: 8px auto;
+  padding: 8px;
+  background-color: var(--lightGrey);
+}
+.user h1{
+  color: white;
+}
+.user span{
+  color: var(--gold);
 }
