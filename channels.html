@@ -100,11 +100,30 @@
               }
             }
           });
+          setInterval(function updateUserCount(){
+            var homeScreen = "true";
+            $.post('updateUsers.php',{posthomeScreen:homeScreen},
+            function(data){
+              if(data != ""){
+                $('#activeUsers').html(data);
+              }
+            });
+          }, 3000);
+
         }
         else{
           alert("Username Required");
         }
       }
+      setInterval(function updateUserCount(){
+        var homeScreen = "true";
+        $.post('updateUsers.php',{posthomeScreen:homeScreen},
+        function(data){
+          if(data != ""){
+            $('#activeUsers').html(data);
+          }
+        });
+      }, 3000);
     </script>
   </body>
   <footer>

@@ -13,7 +13,8 @@
     </div>
     <div class="conversationContent">
       <div class="usersBar" id="usersBar"></div>
-      <div class="messageBox" id="messageBox" onclick="scrollToBottom()"></div>
+      <div class="messageBox" id="messageBox" onclick="scrollToBottom()">
+      </div>
       <div class="messageBar">
         <input type="button" id="exit" value="Leave" onclick="exitChannel();">
         <input type="text" id="message" placeholder="Message..." autofocus>
@@ -31,7 +32,6 @@
 
       //Change Page Title
       document.title = channelName + " - " + username;
-
       //Enter Key Send Method
       send.addEventListener("keydown", function (e) {
           if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
@@ -42,13 +42,11 @@
         var text = e.target.value;
         sendMessage();
       }
-
       //Auto Scroll Method
       setInterval(function scrollToBottom(){
         var element = document.getElementById("messageBox");
         element.scrollTop = element.scrollHeight;
       }, 2000);
-
       //Send Message Method
       function sendMessage(){
         var message = document.getElementById("message").value;
@@ -61,7 +59,6 @@
           document.getElementById("message").value = "";
         }
       }
-
       //Exit Channel Method
       function exitChannel(){
         $.post('exitChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
@@ -69,7 +66,6 @@
         {});
         location.href = '/simplechatroom';
       }
-
       //Update Messages Method
       setInterval(function updateMessages(){
         var messageBox = document.getElementById('messageBox');
@@ -84,7 +80,6 @@
           }
         });
       }, 1000);
-
       //Update Users Method
       setInterval(function updateUsers(){
         var usersBar = document.getElementById('usersBar');
@@ -103,8 +98,7 @@
           }
         });
       }, 1000);
-
-      //If Close or Reload
+      //Auto Close Method
       window.addEventListener('beforeunload', function (e){
         exitChannel();
         e.preventDefault();
