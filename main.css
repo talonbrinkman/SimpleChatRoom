@@ -40,6 +40,8 @@ body{
 }
 .header .headerTitle{
   width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .activeUsers{
   color: white;
@@ -151,6 +153,19 @@ body{
   background-color: var(--gold);
   box-shadow: 0px 0px 10px 1px var(--gold);
 }
+/* Mobile */
+/* @media screen and (max-width : 1500px) {
+  .login {
+    font-size: 200%;
+    max-width: 750px;
+  }
+  .inputs input{
+    margin: 8px auto;
+  }
+  .homeContent{
+    width: 95%;
+  }
+} */
 /* Channels */
 .channelsViewer{
   width: 50vw;
