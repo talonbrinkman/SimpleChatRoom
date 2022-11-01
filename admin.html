@@ -38,8 +38,6 @@
       <div class="loader"></div>
     </div>
     <script>
-      var peakUsers = 0;
-
       function home(){
         //loading Screen Animation
         document.getElementById("loadingScreen").style.visibility = "visible";
@@ -68,6 +66,12 @@
         });
       }, 1000);
       setInterval(function updateUserCount(){
+        $.post('getPeakUsers.php',{},
+        function(data){
+          if(data != ""){
+            peakUsers = data;
+          }
+        });
         var homeScreen = "true";
         $.post('updateUsers.php',{posthomeScreen:homeScreen},
         function(data){
@@ -75,7 +79,10 @@
             $('#activeUsers').html("Active Users: " + data);
             var users = data;
             if(users > peakUsers){
-              peakUsers = users;
+              //If current users surpasses peakUsers then in updates the database peakUsers INT
+              $.post('updatePeakUsers.php',{postusers:users},
+              function(data){
+              });
             }
           }
         });

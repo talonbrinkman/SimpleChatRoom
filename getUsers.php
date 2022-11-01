@@ -19,8 +19,9 @@
     while ($row = mysqli_fetch_assoc($result)){
       $username = $row['username'];
       $channel = $row['channel'];
+      $time = $row['time'];
       if(str_contains($username,$search) || str_contains($channel,$search)){
-        echo '<div class="user"><h1>' . $username . '<span> ' . $channel . '</span></h1></div>';
+        echo '<div class="user"><h1>' . $username . '<span> ' . $channel . ' ' . $time . '</span></h1></div>';
       }
     }
   }

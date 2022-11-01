@@ -504,9 +504,10 @@ footer h1{
 }
 .user span{
   color: var(--gold);
+  float: right;
 }
 /* Mobile */
-@media all and (max-width: 900px){
+@media all and (max-width: 1500px){
   .homeContent{
     width: 100%;
   }
