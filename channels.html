@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Chat Room</title>
     <link rel="stylesheet" href="main.css?v=<?php echo time(); ?>">
     <link rel="icon" type="image/x-icon" href="favicon.png">
@@ -120,10 +120,10 @@
         $.post('updateUsers.php',{posthomeScreen:homeScreen},
         function(data){
           if(data != ""){
-            $('#activeUsers').html(data);
+            $('#activeUsers').html("Active Users: " + data);
           }
         });
-      }, 3000);
+      }, 1000);
     </script>
   </body>
   <footer>

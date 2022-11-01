@@ -21,21 +21,25 @@
         </ul>
       </div>
     </div>
-    <div class="usersViewer">
-      <div class="searchbar">
-        <input type="text" placeholder="Search..." id="searchbar">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
-      <div class="users" id="users">
-        <!-- <div class="user">
-          <h1>Bain <span>MNHS</span></h1>
-        </div> -->
+    <div class="adminTools">
+      <div class="usersViewer">
+        <div class="searchbar">
+          <input type="text" placeholder="Search..." id="searchbar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="users" id="users">
+          <!-- <div class="user">
+            <h1>Bain <span>MNHS</span></h1>
+          </div> -->
+        </div>
       </div>
     </div>
     <div class="loadingScreen" id="loadingScreen">
       <div class="loader"></div>
     </div>
     <script>
+      var peakUsers = 0;
+
       function home(){
         //loading Screen Animation
         document.getElementById("loadingScreen").style.visibility = "visible";
@@ -68,15 +72,21 @@
         $.post('updateUsers.php',{posthomeScreen:homeScreen},
         function(data){
           if(data != ""){
-            $('#activeUsers').html(data);
+            $('#activeUsers').html("Active Users: " + data);
+            var users = data;
+            if(users > peakUsers){
+              peakUsers = users;
+            }
           }
         });
+        document.getElementById("peakUsersText").innerHTML = "Peak Users: " + peakUsers;
       }, 1000);
     </script>
   </body>
   <footer>
     <div class="footerContent">
       <div class="activeUsers">
+        <h1 id="peakUsersText">Peak Users: 0</h1>
         <h1 id="activeUsers">Active Users: 0</h1>
       </div>
       <h1>powered by Bain</h1>

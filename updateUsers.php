@@ -17,7 +17,7 @@
     $result = mysqli_query($conn, $sql);
     $row= mysqli_num_rows($result);
     $userCount = (int)$row;
-    echo "Active Users: " . $userCount;
+    echo $userCount;
   }
   else{
     $hostStatus = $_POST['posthostStatus'];

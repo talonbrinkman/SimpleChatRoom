@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" id="body">
   <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Chat Room</title>
     <link rel="stylesheet" href="main.css?v=<?php echo time(); ?>">
     <link rel="icon" type="image/x-icon" href="favicon.png">
@@ -121,51 +121,56 @@
         sessionStorage.setItem("username", username);
         sessionStorage.setItem("channelName", channelName);
         sessionStorage.setItem("channelPassword", channelPassword);
-        if(username !== "" && channelName !== "" && !channelName.includes(" ")){
-          var username = $('#username').val();
-          var channelName = $('#channelName').val();
-          var channelPassword = $('#channelPassword').val();
+        if(username !== "" && channelName !== ""){
+          if(!channelName.includes(" ")){
+            var username = $('#username').val();
+            var channelName = $('#channelName').val();
+            var channelPassword = $('#channelPassword').val();
 
-          //Checks if Channel already exists
-          $.post('checkExisting.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
-          function(data){
-            if(data == "true"){
-              //Checks if Username already exists
-              $.post('checkDuplicates.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
-              function(data){
-                if(data == "false"){
+            //Checks if Channel already exists
+            $.post('checkExisting.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+            function(data){
+              if(data == "true"){
+                //Checks if Username already exists
+                $.post('checkDuplicates.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+                function(data){
+                  if(data == "false"){
 
-                  //Checks Password
-                  $.post('checkPassword.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
-                  function(data){
-                    if(data == "true"){
+                    //Checks Password
+                    $.post('checkPassword.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+                    function(data){
+                      if(data == "true"){
 
-                      //Join Function
-                      $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
-                      function(){});
-                      var loadingScreen = document.getElementById("loadingScreen");
-                      loadingScreen.style.visibility = "visible";
-                      setTimeout(function(){
-                        //Loading
-                        loadingScreen.style.visibility = "hidden";
-                        location.href = '/simplechatroom/channel.html';
-                      }, 750);
-                    }
+                        //Join Function
+                        $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+                        function(){});
+                        var loadingScreen = document.getElementById("loadingScreen");
+                        loadingScreen.style.visibility = "visible";
+                        setTimeout(function(){
+                          //Loading
+                          loadingScreen.style.visibility = "hidden";
+                          location.href = '/simplechatroom/channel.html';
+                        }, 750);
+                      }
 
-                    else{
-                      alert("Password is Invalid");
-                    }
-                  });
-                }
-                else{
-                  alert("Username already exists");
-                }
-              });
-            }
-            else{
-              alert("Channel Doesn't Exist");
-            }
-          });
+                      else{
+                        alert("Password is Invalid");
+                      }
+                    });
+                  }
+                  else{
+                    alert("Username already exists");
+                  }
+                });
+              }
+              else{
+                alert("Channel Doesn't Exist");
+              }
+            });
+          }
+          else{
+            alert("Spaces not allowed for Channel Name & Password");
+          }
         }
         else{
           alert("Error 400");
@@ -182,39 +187,44 @@
         sessionStorage.setItem("channelName", channelName);
         sessionStorage.setItem("channelPassword", channelPassword);
 
-        if(username !== "" && channelName !== "" && !channelName.includes(" ")){
-          var username = $('#username').val();
-          var channelName = $('#channelName').val();
-          var channelPassword = $('#channelPassword').val();
+        if(username !== "" && channelName !== ""){
+          if(!channelName.includes(" ")){
+            var username = $('#username').val();
+            var channelName = $('#channelName').val();
+            var channelPassword = $('#channelPassword').val();
 
-          //Checks if Channel already exists
-          $.post('checkExisting.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
-          function(data){
-            if(data == "false"){
-              //Checks if Username already exists
-              $.post('checkDuplicates.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
-              function(data){
-                if(data == "false"){
-                    //Join Function
-                    $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
-                    function(){});
-                    var loadingScreen = document.getElementById("loadingScreen");
-                    loadingScreen.style.visibility = "visible";
-                    setTimeout(function(){
-                      //Loading
-                      loadingScreen.style.visibility = "hidden";
-                      location.href = '/simplechatroom/channel.html';
-                    }, 750);
-                }
-                else{
-                  alert("Username already exists");
-                }
-              });
-            }
-            else{
-              alert("Channel Already Exists");
-            }
-          });
+            //Checks if Channel already exists
+            $.post('checkExisting.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+            function(data){
+              if(data == "false"){
+                //Checks if Username already exists
+                $.post('checkDuplicates.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+                function(data){
+                  if(data == "false"){
+                      //Join Function
+                      $.post('joinHostChannel.php',{posthostStatus:hostStatus,postusername:username,postchannelName:channelName,postchannelPassword:channelPassword},
+                      function(){});
+                      var loadingScreen = document.getElementById("loadingScreen");
+                      loadingScreen.style.visibility = "visible";
+                      setTimeout(function(){
+                        //Loading
+                        loadingScreen.style.visibility = "hidden";
+                        location.href = '/simplechatroom/channel.html';
+                      }, 750);
+                  }
+                  else{
+                    alert("Username already exists");
+                  }
+                });
+              }
+              else{
+                alert("Channel Already Exists");
+              }
+            });
+          }
+          else{
+            alert("Spaces not allowed for Channel Name & Password");
+          }
         }
         else{
           alert("Error 400");
@@ -225,10 +235,10 @@
         $.post('updateUsers.php',{posthomeScreen:homeScreen},
         function(data){
           if(data != ""){
-            $('#activeUsers').html(data);
+            $('#activeUsers').html("Active Users: " + data);
           }
         });
-      }, 3000);
+      }, 1000);
     </script>
   </body>
   <footer>
